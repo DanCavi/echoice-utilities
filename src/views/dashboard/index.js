@@ -1,4 +1,5 @@
-import { Stack } from '@mui/material';
+import { Box, Stack } from '@mui/material';
+import { DataGrid } from '@mui/x-data-grid';
 import BarChart from 'dev-components/charts/BarChart';
 import LineChart from 'dev-components/charts/LineChart';
 import PieChart from 'dev-components/charts/PieChart';
@@ -6,11 +7,14 @@ import MainCard from 'ui-component/cards/MainCard';
 import SubCard from 'ui-component/cards/SubCard';
 
 const Dashboard = () => {
+
   return (
     <MainCard title="Dashboard">
       <Stack spacing={2}>
         <SubCard title="Consultas HBES">
-
+          <Box p={2}>
+            <DataGrid rows={[{ id: 1 }]} columns={[{ field: 'id'}]} autoHeight />   
+          </Box>
         </SubCard>
         <SubCard title="Consultas Bureau">
           <LineChart />
