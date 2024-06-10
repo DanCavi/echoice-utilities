@@ -26,10 +26,13 @@ const ValidationTextField = styled(TextField)({
     borderRadius: 4
   }
 });
-function CustomInput({ name, error, label, value, onChange, variant, desactivar, type, id, formatNumber, required, ...otherStyles }) {
+function CustomInput({ minRows, placeholder, multiline, name, error, label, value, onChange, variant, desactivar, type, id, formatNumber, required, ...otherStyles }) {
   return (
     <>
       <ValidationTextField
+        placeholder={placeholder}
+        minRows={minRows}
+        multiline={multiline}
         type={type}
         error={error}
         disabled={desactivar}
@@ -60,7 +63,10 @@ CustomInput.defaultPros = {
   variant: 'outlined',
   positionIcon: 'start',
   required: false,
-  error: false
+  error: false,
+  multiline: false,
+  placeholder: '',
+  minRows: 1
 };
 CustomInput.propTypes = {
   error: PropTypes.bool,
@@ -74,7 +80,9 @@ CustomInput.propTypes = {
   onClick: PropTypes.func,
   positionIcon: PropTypes.string,
   formatNumber: PropTypes.elementType,
-  required: PropTypes.bool
+  required: PropTypes.bool,
+  multiline: PropTypes.bool,
+  placeholder: PropTypes.string
 };
 
 export default CustomInput;

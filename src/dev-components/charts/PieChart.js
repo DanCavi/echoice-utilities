@@ -2,22 +2,15 @@ import { useEffect, useState } from 'react'
 import Chart from 'react-apexcharts'
 
 const PieChart = () => {
-
-  const [series, setSeries] = useState([])
-
-  const genRandomData = () => {
-    return Array.from({ length: 2 }, () => Math.floor(Math.random() * 100))
-  }
+  const [series, setSeries] = useState(generateRandomData())
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setSeries(genRandomData())
+      setSeries(generateRandomData())
     }, 5000)
 
     return () => clearInterval(interval)
   }, [])
-
-
 
   return (
     <div>
@@ -34,6 +27,10 @@ const PieChart = () => {
       />
     </div>
   )
+}
+
+function generateRandomData() {
+  return [Math.floor(Math.random() * 100), Math.floor(Math.random() * 100)]
 }
 
 export default PieChart

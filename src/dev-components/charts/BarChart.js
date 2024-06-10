@@ -1,35 +1,18 @@
 import { useEffect, useState } from 'react'
 import Chart from 'react-apexcharts'
+import { getRandomData } from 'dev-utils/functions'
+import { BAR_SERIES } from 'dev-constants'
 
-const BarChart = () => {
+const CATEGORIES = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
-  const [series, setSeries] = useState([
-    {
-      name: 'Bureau',
-      data: [30, 40, 35, 50, 49, 60, 70, 91, 125]
-    },
-    {
-      name: 'Cache',
-      data: [10, 20, 15, 25, 19, 30, 40, 51, 65]
-    }
-  ])
+const BarChart = ({ categories = CATEGORIES, series = BAR_SERIES }) => {
 
-  const genRandomData = () => {
-    return Array.from({ length: 12 }, () => Math.floor(Math.random() * 100))
-  }
+  const [internalSeries, setInternalSeries] = useState(series)
+
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setSeries([
-        {
-          name: 'Bureau',
-          data: genRandomData()
-        },
-        {
-          name: 'Cache',
-          data: genRandomData()
-        }
-      ])
+      setInternalSeries(prevSerie => prevSerie.map(serie => ({ ...serie, data: getRandomData(categories.length) })))
     }, 5000)
     return () => clearInterval(interval)
   }, [])
@@ -38,16 +21,16 @@ const BarChart = () => {
 
   return (
     <div>
-      <Chart 
+      <Chart
         options={{
           chart: {
             id: 'basic-bar'
           },
           xaxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            categories
           }
         }}
-        series={series}
+        series={internalSeries}
         type="bar"
         height={350}
       />
