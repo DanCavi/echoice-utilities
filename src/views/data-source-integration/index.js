@@ -1,4 +1,5 @@
 import { Button, Grid, Stack } from '@mui/material';
+import { DataGrid } from '@mui/x-data-grid';
 import VariableField from 'dev-components/VariableField';
 import { useState } from 'react';
 import CustomInput from 'ui-component/Input/CustomInput';
@@ -94,25 +95,63 @@ const DataSourceIntegration = () => {
       </SubCard>
 
       <SubCard title="Parametros de Salida" sx={{ mt: 2 }}>
-          <Stack direction="column" spacing={2} p={2}>
-            <div>
-              <TituloStandar titulo="Response" />
-              <SelectStandar datos={['JSON', 'XML']} />
-            </div>
-          </Stack>
-
+        <Stack direction="column" spacing={2} p={2}>
+          <div>
+            <TituloStandar titulo="Response" />
+            <SelectStandar datos={['JSON', 'XML']} />
+          </div>
           {Array.from({ length: numResponseVars }, (_, i) => (
             <VariableField key={i} numVars={i + 1} />
           ))}
+        </Stack>
 
-          <Stack direction="row" spacing={2} >
-            <Button variant="contained" onClick={() => setNumResponseVars(numResponseVars + 1)}>Añadir Variable</Button>
-            {numResponseVars > 1 && <Button variant="contained" onClick={() => setNumResponseVars(numResponseVars - 1)}>Eliminar Variable</Button>}
-          </Stack>
+
+        <Stack direction="row" spacing={2} >
+          <Button variant="contained" onClick={() => setNumResponseVars(numResponseVars + 1)}>Añadir Variable</Button>
+          {numResponseVars > 1 && <Button variant="contained" onClick={() => setNumResponseVars(numResponseVars - 1)}>Eliminar Variable</Button>}
+        </Stack>
 
 
       </SubCard>
+      <Stack direction="row" spacing={2} sx={{ mx: '50%', my: 2 }}>
+        <Button variant="contained" >Ok</Button>
+        <Button variant="contained" >Reset</Button>
+      </Stack>
 
+      <SubCard title="Servicios" sx={{ mt: 2, p: 2 }}>
+
+
+        <DataGrid
+          columns={[{
+            field: 'name',
+            headerName: 'Nombre Servicio',
+            flex: 1
+          },
+          {
+            field: 'type',
+            headerName: 'Tipo Persona',
+            flex: 1
+          },
+          {
+            field: 'bureau',
+            headerName: 'Bureau',
+            flex: 1
+          },
+          {
+            field: 'state',
+            headerName: 'Estado',
+            flex: 1
+          },
+          {
+            field: 'actions',
+            headerName: 'Acciones',
+            type: 'actions',
+          }]}
+          rows={[]}
+          autoHeight
+        />
+
+      </SubCard>
     </MainCard>
   );
 };
