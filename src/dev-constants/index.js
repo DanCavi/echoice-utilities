@@ -27,3 +27,17 @@ export const LINE_SERIES = [
     data: [42, 30, 20, 10, 19, 33, 40, 32, 11].reverse()
   }
 ]
+export const INITIAL_ROWS_USERS = [
+  {
+    id: 1,
+    name: 'Usuario Enlace',
+    user: 'usuario@enlaceinmobiliario.cl',
+    state: 'Active'
+  },
+  {
+    id: 2,
+    name: 'Usuario Penta',
+    user: 'usuario@penta.cl',
+    state: 'No Active'
+  }
+]
