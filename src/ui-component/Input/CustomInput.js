@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 // importacion de Grid y elementos
 import { styled } from '@mui/material/styles';
 // import { IconButton, InputAdornment } from '@mui/material';
-import { TextField } from '@mui/material';
+import { IconButton, InputAdornment, TextField } from '@mui/material';
 import PropTypes from 'prop-types';
+import { IconEye, IconEyeOff } from '@tabler/icons-react';
 
 const ValidationTextField = styled(TextField)({
   '& input:valid + fieldset': {
@@ -27,13 +28,16 @@ const ValidationTextField = styled(TextField)({
   }
 });
 function CustomInput({ minRows, placeholder, multiline, name, error, label, value, onChange, variant, desactivar, type, id, formatNumber, required, ...otherStyles }) {
+
+  const [showPassword, setShowPassword] = useState(false);
+
   return (
     <>
       <ValidationTextField
         placeholder={placeholder}
         minRows={minRows}
         multiline={multiline}
-        type={type}
+        type={type === 'password' && showPassword ? 'text' : type}
         error={error}
         disabled={desactivar}
         label={label}
@@ -45,12 +49,16 @@ function CustomInput({ minRows, placeholder, multiline, name, error, label, valu
         required={required}
         inputProps={{}}
         InputProps={{
-          inputComponent: formatNumber
-          // startAdornment: (
-          //   <InputAdornment position={positionIcon}>
-          //     <IconButton onClick={onClick}>{icon}</IconButton>
-          //   </InputAdornment>
-          // )
+          inputComponent: formatNumber,
+          endAdornment: type === 'password' ? (
+            <InputAdornment position="end">
+              <IconButton
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                { showPassword ? <IconEye /> : <IconEyeOff /> }
+              </IconButton>
+            </InputAdornment>
+          ) : null
         }}
         size="small"
         sx={{ width: '100%', ...otherStyles }}

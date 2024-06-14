@@ -23,9 +23,9 @@ const Dashboard = () => {
         <SubCard title="Consultas HBES">
           <Box p={2}>
             <Stack p={2} spacing={2} justifyContent={"space-around"} direction="row">
-              <SelectStandar datos={['Todos', 'Sinacofi', 'Equifax', 'TransUnion', 'Siisa']} />
-              <SelectStandar datos={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']} />
-              <SelectStandar datos={['2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024']} />
+              <SelectStandar flex datos={['Todos', 'Sinacofi', 'Equifax', 'TransUnion', 'Siisa']} />
+              <SelectStandar flex datos={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']} />
+              <SelectStandar flex datos={['2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024']} />
             </Stack>
             <DataGrid
               columns={columns}

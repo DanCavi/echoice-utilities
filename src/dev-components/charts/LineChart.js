@@ -3,6 +3,7 @@ import Chart from 'react-apexcharts'
 import { getRandomData } from 'dev-utils/functions'
 import { MONTHS, LINE_SERIES } from 'dev-constants'
 
+
 const LineChart = ({ categories = MONTHS, series = LINE_SERIES }) => {
 
   const [internalSeries, setInternalSeries] = useState(series)

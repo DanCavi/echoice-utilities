@@ -21,10 +21,10 @@ const theme = createTheme({
   }
 });
 
-function SelectStandar({ datos = [], value = '', onChange = () => { }, width = '100%', textAlign = 'left', maxHeight = 200, justifyContent = 'flex-start' }) {
-  const valor = datos.includes(value) ? value : '';
+function SelectStandar({ flex = false, datos = [], value = '', onChange = () => { }, width = '100%', textAlign = 'left', maxHeight = 200, justifyContent = 'flex-start' }) {
+  const valor = datos.includes(value) ? value : ''
   return (
-    <div style={{ textAlign }}>
+    <div style={{ textAlign, flex: flex ? 1 : null  }}>
       <ThemeProvider theme={theme}>
         <FormControl sx={{ m: 0, width, backgroundColor: '#FAFAFA' }} size="small">
           {/* <InputLabel id="demo-select-small-label">Cliente</InputLabel> */}

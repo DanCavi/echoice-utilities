@@ -4,6 +4,7 @@ import { useState } from 'react';
 import MainCard from 'ui-component/cards/MainCard';
 import UserToolbar from 'dev-components/datagrid/UserToolbar'
 import { INITIAL_ROWS_USERS } from 'dev-constants';
+import DialogForm from 'dev-components/DialogForm';
 
 const COLUMNS = [
   {
@@ -44,6 +45,10 @@ const WSUsers = () => {
   const [rows, setRows] = useState(INITIAL_ROWS_USERS);
   const [open, setOpen] = useState(false)
 
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
   return (
     <MainCard title="Web Service Users" sx={{ p: 2 }} >
       
@@ -57,10 +62,12 @@ const WSUsers = () => {
         }}
         slotProps={{
           toolbar: {
-            onClick: () => console.log('add user outside of component'),
+            onClick: handleClickOpen
           }
         }}
       />
+
+      <DialogForm open={open} onClose={() => setOpen(false)} />
 
     </MainCard>
   );

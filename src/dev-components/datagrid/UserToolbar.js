@@ -3,17 +3,15 @@ import { GridToolbarContainer } from "@mui/x-data-grid"
 import { IconPlus } from "@tabler/icons-react"
 
 
-const UserToolbar = ( props ) => {
-
-  const {
-    variant = "contained",
-    startIcon = <IconPlus />,
-    sx = {
-      ml: 'auto'
-    },
-    onClick = () => console.log('add user'),
-    ...other
-  } = props;
+const UserToolbar = ({ 
+  variant = "contained",
+  startIcon = <IconPlus />,
+  sx = {
+    ml: 'auto'
+  },
+  onClick = () => console.log('add user'),
+  ...other
+}) => {
 
   return (
     <GridToolbarContainer sx={{ p: 1 }}>
@@ -22,6 +20,7 @@ const UserToolbar = ( props ) => {
         startIcon={startIcon} 
         sx={sx}
         onClick={onClick}
+        { ...other }
       >
         Add User
       </Button>
