@@ -34,8 +34,12 @@ const COLUMNS = [
         icon={<IconBan />} 
         label="Desactivar" 
         onClick={() => console.log(params)} 
-        />,
-      <GridActionsCellItem icon={<IconEdit />} label="Editar" onClick={() => console.log(params)} />
+      />,
+      <GridActionsCellItem 
+        icon={<IconEdit />}
+        label="Editar"
+        onClick={() => console.log(params)}
+      />
     ]
   }
 ];

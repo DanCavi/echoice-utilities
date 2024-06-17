@@ -12,6 +12,7 @@ const PieChart = () => {
     return () => clearInterval(interval)
   }, [])
 
+
   return (
     <div>
       <Chart 
@@ -20,10 +21,12 @@ const PieChart = () => {
             id: 'storage'
           },
           labels: ['Used', 'Free'],
+          colors: ['rgb(0, 143, 251)', '#ff4560'],
         }}
         series={series}
         type="pie"
         height={350}
+        
       />
     </div>
   )
