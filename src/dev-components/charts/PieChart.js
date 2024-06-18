@@ -4,13 +4,6 @@ import Chart from 'react-apexcharts'
 const PieChart = () => {
   const [series, setSeries] = useState(generateRandomData())
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setSeries(generateRandomData())
-    }, 5000)
-
-    return () => clearInterval(interval)
-  }, [])
 
 
   return (

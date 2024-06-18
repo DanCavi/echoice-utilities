@@ -10,14 +10,6 @@ const BarChart = ({ categories = CATEGORIES, series = BAR_SERIES }) => {
   const [internalSeries, setInternalSeries] = useState(series)
 
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setInternalSeries(prevSerie => prevSerie.map(serie => ({ ...serie, data: getRandomData(categories.length) })))
-    }, 5000)
-    return () => clearInterval(interval)
-  }, [])
-
-
 
   return (
     <div>

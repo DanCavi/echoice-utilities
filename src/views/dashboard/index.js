@@ -40,14 +40,17 @@ const Dashboard = () => {
               />   
           </Box>
         </SubCard>
-        <SubCard title="Consultas Bureau">
+        <Stack direction="row" spacing={2}>
+
+        <SubCard title="Consultas Bureau" sx={{ flex: 1 }}>
           <LineChart />
         </SubCard>
+        <SubCard title="Porcentaje de Almacenamiento" sx={{ flex: 1 }}>
+          <PieChart />
+        </SubCard>
+        </Stack>
         <SubCard title="Bureau vs Cache">
           <BarChart />
-        </SubCard>
-        <SubCard title="Porcentaje de Almacenamiento">
-          <PieChart />
         </SubCard>
       </Stack>
     </MainCard>

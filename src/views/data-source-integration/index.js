@@ -1,5 +1,6 @@
 import { Button, Grid, Stack } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
+import { IconPlus, IconTrash } from '@tabler/icons-react';
 import VariableField from 'dev-components/VariableField';
 import { useState } from 'react';
 import CustomInput from 'ui-component/Input/CustomInput';
@@ -87,9 +88,9 @@ const DataSourceIntegration = () => {
 
         </Stack>
 
-        <Stack direction="row" spacing={2} >
-          <Button variant="contained" onClick={() => setNumVars(numVars + 1)}>Añadir Variable</Button>
-          {numVars > 1 && <Button variant="contained" onClick={() => setNumVars(numVars - 1)}>Eliminar Variable</Button>}
+        <Stack direction="row" spacing={2} px={4} >
+          <Button variant="outlined" startIcon={<IconPlus />} onClick={() => setNumVars(numVars + 1)}>Añadir Variable</Button>
+          {numVars > 1 && <Button variant="outlined" startIcon={<IconTrash />} color="error" onClick={() => setNumVars(numVars - 1)}>Eliminar Variable</Button>}
         </Stack>
 
       </SubCard>
@@ -106,16 +107,28 @@ const DataSourceIntegration = () => {
         </Stack>
 
 
-        <Stack direction="row" spacing={2} >
-          <Button variant="contained" onClick={() => setNumResponseVars(numResponseVars + 1)}>Añadir Variable</Button>
-          {numResponseVars > 1 && <Button variant="contained" onClick={() => setNumResponseVars(numResponseVars - 1)}>Eliminar Variable</Button>}
+        <Stack direction="row" spacing={2} px={4} >
+          <Button variant="outlined" startIcon={<IconPlus />} onClick={() => setNumResponseVars(numResponseVars + 1)}>Añadir Variable</Button>
+          {numResponseVars > 1 && <Button variant="outlined" startIcon={<IconTrash />} color="error" onClick={() => setNumResponseVars(numResponseVars - 1)}>Eliminar Variable</Button>}
         </Stack>
 
-
       </SubCard>
-      <Stack direction="row" spacing={2} sx={{ mx: '50%', my: 2 }}>
-        <Button variant="contained" >Ok</Button>
-        <Button variant="contained" >Reset</Button>
+
+
+      <Stack direction="row" spacing={2} justifyContent={'center'} sx={{ my: 2, mx: 40 }}>
+        <div
+          style={{ width: '60%'}}
+          
+        >
+        <Button fullWidth variant="contained">Ok</Button>
+
+        </div>
+        <div
+          style={{ width: '60%'}}
+        >
+
+        <Button fullWidth variant="contained" >Reset</Button>
+        </div>
       </Stack>
 
       <SubCard title="Servicios" sx={{ mt: 2, p: 2 }}>
