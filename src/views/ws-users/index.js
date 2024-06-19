@@ -31,11 +31,11 @@ const COLUMNS = [
     type: 'actions',
     getActions: (params) => [
       <GridActionsCellItem
-        icon={<IconBan />} 
-        label="Desactivar" 
-        onClick={() => console.log(params)} 
+        icon={<IconBan />}
+        label="Desactivar"
+        onClick={() => console.log(params)}
       />,
-      <GridActionsCellItem 
+      <GridActionsCellItem
         icon={<IconEdit />}
         label="Editar"
         onClick={() => console.log(params)}
@@ -45,7 +45,7 @@ const COLUMNS = [
 ];
 
 const WSUsers = () => {
-  
+
   const [rows, setRows] = useState(INITIAL_ROWS_USERS);
   const [open, setOpen] = useState(false)
 
@@ -55,14 +55,15 @@ const WSUsers = () => {
 
   return (
     <MainCard title="Web Service Users" sx={{ p: 2 }} >
-      
-      <DataGrid 
+
+      <DataGrid
         rows={rows}
         columns={COLUMNS}
         autoHeight
         slots={{
-          
+
           toolbar: UserToolbar
+
         }}
         slotProps={{
           toolbar: {
