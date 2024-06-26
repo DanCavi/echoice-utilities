@@ -9,3 +9,13 @@ export const toCamelCase = (str) => {
       index === 0 ? match.toLowerCase() : match.toUpperCase()
     ).replace(/\s+/g, '');
 }
+
+export const getItemDescendantsIds = (item) => {
+  const ids = []
+  item.children?.forEach((child) => {
+    ids.push(child.id);
+    ids.push(...getItemDescendantsIds(child));
+  })
+
+  return ids
+}
