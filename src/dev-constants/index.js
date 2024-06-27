@@ -41,3 +41,7 @@ export const INITIAL_ROWS_USERS = [
     state: 'No Active'
   }
 ]
+
+export const INITIAL_ROWS_EMPRESAS = [
+  
+]

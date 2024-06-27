@@ -13,6 +13,7 @@ const SubCard = forwardRef(({ children, content, contentClass, darkTitle, second
   return (
     <Card
       ref={ref}
+      elevation={3}
       sx={{
         border: '1px solid',
         borderColor: theme.palette.primary.light,

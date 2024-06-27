@@ -17,6 +17,13 @@ const LineChart = ({ categories = MONTHS, series = LINE_SERIES }) => {
           },
           xaxis: {
             categories
+          },
+          theme: {
+            monochrome: {
+              enabled: true,
+              shadeTo: 'light',
+              shadeIntensity: 0.6
+            }
           }
         }}
         series={internalSeries}

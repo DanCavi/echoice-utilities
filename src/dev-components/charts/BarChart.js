@@ -20,6 +20,13 @@ const BarChart = ({ categories = CATEGORIES, series = BAR_SERIES }) => {
           },
           xaxis: {
             categories
+          },
+          theme: {
+            monochrome: {
+              enabled: true,
+              shadeTo: 'light',
+              shadeIntensity: 0.6
+            }
           }
         }}
         series={internalSeries}

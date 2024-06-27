@@ -14,7 +14,13 @@ const PieChart = () => {
             id: 'storage'
           },
           labels: ['Used', 'Free'],
-          colors: ['rgb(0, 143, 251)', '#ff4560'],
+          theme: {
+            monochrome: {
+              enabled: true,
+              shadeTo: 'light',
+              shadeIntensity: 0.6
+            }
+          }
         }}
         series={series}
         type="pie"

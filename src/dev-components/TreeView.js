@@ -2,6 +2,7 @@ import { Box } from "@mui/material"
 import { RichTreeView, useTreeViewApiRef } from "@mui/x-tree-view"
 import { getItemDescendantsIds } from "dev-utils/functions";
 import { useRef, useState } from "react";
+import TituloStandar from "ui-component/Titulo/TituloStandar";
 
 
 const MUI_X_PRODUCTS = [
@@ -86,7 +87,8 @@ const TreeView = () => {
 
 
   return (
-    <Box>
+    <Box p={2} >
+      <TituloStandar titulo="Selección de Variables" />
       <RichTreeView
         checkboxSelection
         multiSelect

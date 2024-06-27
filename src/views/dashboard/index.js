@@ -20,6 +20,18 @@ const Dashboard = () => {
   return (
     <MainCard title="Dashboard">
       <Stack spacing={2}>
+        <Stack direction="row" spacing={2}>
+
+        <SubCard title="Consultas Bureau" sx={{ flex: 1 }}>
+          <LineChart />
+        </SubCard>
+        <SubCard title="Porcentaje de Almacenamiento" sx={{ flex: 1 }}>
+          <PieChart />
+        </SubCard>
+        </Stack>
+        <SubCard title="Bureau vs Cache">
+          <BarChart />
+        </SubCard>
         <SubCard title="Consultas HBES">
           <Box p={2}>
             <DataGrid
@@ -39,18 +51,6 @@ const Dashboard = () => {
               slots={{ toolbar: GridToolbar }}
               />   
           </Box>
-        </SubCard>
-        <Stack direction="row" spacing={2}>
-
-        <SubCard title="Consultas Bureau" sx={{ flex: 1 }}>
-          <LineChart />
-        </SubCard>
-        <SubCard title="Porcentaje de Almacenamiento" sx={{ flex: 1 }}>
-          <PieChart />
-        </SubCard>
-        </Stack>
-        <SubCard title="Bureau vs Cache">
-          <BarChart />
         </SubCard>
       </Stack>
     </MainCard>

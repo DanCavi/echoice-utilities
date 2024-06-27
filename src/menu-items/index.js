@@ -1,8 +1,8 @@
-import { IconDeviceFloppy, IconGitFork, IconManualGearbox, IconAnalyze, IconDashboard, IconFileAnalytics, IconUsersGroup, IconPlugConnected, IconSearch, IconChartDots3 } from '@tabler/icons-react';
+import { IconSettings, IconDeviceFloppy, IconGitFork, IconManualGearbox, IconAnalyze, IconDashboard, IconFileAnalytics, IconUsersGroup, IconPlugConnected, IconSearch, IconChartDots3 } from '@tabler/icons-react';
 
 import './styles.css';
 
-const icons = { IconDeviceFloppy, IconGitFork, IconManualGearbox, IconAnalyze, IconDashboard, IconFileAnalytics, IconUsersGroup, IconPlugConnected, IconSearch, IconChartDots3 };
+const icons = { IconSettings, IconDeviceFloppy, IconGitFork, IconManualGearbox, IconAnalyze, IconDashboard, IconFileAnalytics, IconUsersGroup, IconPlugConnected, IconSearch, IconChartDots3 };
 // ==============================|| MENU ITEMS ||============================== //
 
 const menuItems = {
@@ -18,6 +18,13 @@ const menuItems = {
           type: 'item',
           url: '/dashboard',
           icon: icons.IconDashboard
+        },
+        {
+          id: 'crear-empresa',
+          title: 'Crear Empresa',
+          type: 'item',
+          url: '/crear-empresa',
+          icon: icons.IconDeviceFloppy
         },
         {
           id: 'data-source-integration',
@@ -49,6 +56,21 @@ const menuItems = {
           type: 'item',
           url: '/search',
           icon: icons.IconSearch,
+          breadcrumbs: false
+        },
+      ]
+    },
+    {
+      id: 'menu-options',
+      title: '',
+      type: 'group',
+      children: [
+        {
+          id: 'system-option',
+          title: 'System Option',
+          type: 'item',
+          url: '/system-option',
+          icon: icons.IconSettings,
           breadcrumbs: false
         }
       ]
