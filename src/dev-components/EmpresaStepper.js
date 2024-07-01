@@ -23,6 +23,41 @@ const StepOne = () => {
   )
 }
 
+const StepTwo = () => {
+
+  const vars = ['Correo', 'Telefono', 'Dirección']
+
+  return (
+
+    vars.map((name) => {
+      return (
+        <Grid item xs={4}>
+          <TituloStandar titulo={`${name}`} />
+          <CustomInput name={toCamelCase(name)} />
+        </Grid>
+      )
+    })
+
+  )
+}
+
+const StepThree = () => {
+
+  return (
+
+
+    variables.map((name) => {
+      return (
+        <Grid item xs={4}>
+          <TituloStandar titulo={`${name}`} />
+          <CustomInput name={toCamelCase(name)} />
+        </Grid>
+      )
+    })
+  )
+}
+
+
 const EmpresaStepper = ({
   activeStep = 0,
   handleNext,
@@ -31,8 +66,6 @@ const EmpresaStepper = ({
 
 
   const [internalActiveStep, setInternalActiveStep] = useState(activeStep);
-
-
 
   return (
     <Box sx={{ width: '100%' }}>
@@ -50,8 +83,8 @@ const EmpresaStepper = ({
 
       <Grid container spacing={2} sx={{ p: 2 }}>
         {internalActiveStep === 0 && <StepOne />}
-        {internalActiveStep === 1 && <div>Step 2</div>}
-        {internalActiveStep === 2 && <div>Step 3</div>}
+        {internalActiveStep === 1 && <StepTwo />}
+        {internalActiveStep === 2 && <StepThree />}
       </Grid>
 
       <Stack direction={'row'} justifyContent="space-between" >
@@ -69,6 +102,7 @@ const EmpresaStepper = ({
           onClick={handleNext ? handleNext : () => setInternalActiveStep(prev => prev + 1)}
         >
           Next
+
         </Button>
 
       </Stack>

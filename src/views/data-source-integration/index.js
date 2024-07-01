@@ -39,7 +39,7 @@ const DataSourceIntegration = () => {
         <Grid item xs={4}>
 
           <TituloStandar titulo="Nombre de Origen" />
-          <SelectStandar datos={['Sinacofi', 'Fuente Tercero', 'Equifax', 'TransUnion', 'Siisa']} />
+          <SelectStandar datos={['CCS']} />
         </Grid>
         <Grid item xs={4}>
 
@@ -50,20 +50,6 @@ const DataSourceIntegration = () => {
 
           <TituloStandar titulo="Tipo Persona" />
           <SelectStandar datos={['Natural', 'Jurídica', 'Ambas']} />
-        </Grid>
-        <Grid item xs={4}>
-
-          <TituloStandar titulo="Tipo de Vigencia" />
-          <SelectStandar datos={['Cantidad de Dias', 'Dias de la semana']} />
-
-        </Grid>
-        <Grid item xs={4}>
-          <TituloStandar titulo="Cantidad de Dias" />
-          <CustomInput />
-        </Grid>
-        <Grid item xs={4}>
-          <TituloStandar titulo="URL" />
-          <CustomInput />
         </Grid>
       </Grid>
       <SubCard title="Parametros de entrada" sx={{ mt: 2 }} >

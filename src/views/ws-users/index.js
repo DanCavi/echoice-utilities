@@ -2,9 +2,10 @@ import { DataGrid, GridActionsCellItem } from '@mui/x-data-grid';
 import { IconBan, IconEdit } from '@tabler/icons-react';
 import { useState } from 'react';
 import MainCard from 'ui-component/cards/MainCard';
-import UserToolbar from 'dev-components/datagrid/UserToolbar'
 import { INITIAL_ROWS_USERS } from 'dev-constants';
 import DialogForm from 'dev-components/DialogForm';
+import SubCard from 'ui-component/cards/SubCard';
+import { Stack } from '@mui/material';
 
 const COLUMNS = [
   {
@@ -56,22 +57,28 @@ const WSUsers = () => {
   return (
     <MainCard title="Web Service Users" sx={{ p: 2 }} >
 
+      <Stack spacing={2}>
+
+
+    
+    <SubCard title="Crear Usuario">
+
+
+
+
+    </SubCard>
+
+
+    <SubCard title="Lista de Usuarios">
+
       <DataGrid
         rows={rows}
         columns={COLUMNS}
         autoHeight
-        slots={{
+        />
+      </SubCard>
 
-          toolbar: UserToolbar
-
-        }}
-        slotProps={{
-          toolbar: {
-            onClick: handleClickOpen
-          }
-        }}
-      />
-
+        </Stack>
       <DialogForm open={open} onClose={() => setOpen(false)} />
 
     </MainCard>

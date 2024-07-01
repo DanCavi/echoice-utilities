@@ -45,6 +45,8 @@ export const INITIAL_ROWS_USERS = [
 export const INITIAL_ROWS_EMPRESAS = [
   {
     id: 1,
-    name: 'Komatsu',
+    name: 'CCS',
+    identification: '123456789',
+    country: 'Chile'
   }
 ]
