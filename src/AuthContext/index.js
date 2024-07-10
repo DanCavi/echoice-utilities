@@ -15,6 +15,14 @@ export function AuthContextProvider({ children }) {
   const searchParams = new URLSearchParams(location.hash.substring(1));
   const accessTokenParam = searchParams.get('access_token');
 
+  const getRedirectUrl = () => {
+    if (window.location.hostname === 'localhost') {
+      return 'http://localhost:3000';
+    } else {
+      return 'https://hbes.ecloudapp.cloud/';
+    }
+  }
+
   const login = useCallback(() => {
     setIsLoading(true);
     
@@ -22,8 +30,10 @@ export function AuthContextProvider({ children }) {
       setIsAuthenticated(true);
       setIsLoading(false);
     } else if (!accessTokenParam) {
-      window.location =
-        'https://login-ech.auth.us-east-1.amazoncognito.com/login?client_id=2ot0m819qsr7b61q0lff6k0g1n&response_type=token&scope=openid&redirect_uri=https://klc.cec.ecloudapp.cloud/';
+      // window.location =
+      //   'https://login-ech.auth.us-east-1.amazoncognito.com/login?client_id=2ot0m819qsr7b61q0lff6k0g1n&response_type=token&scope=openid&redirect_uri=https://klc.cec.ecloudapp.cloud/';
+
+      window.location = `https://devhbes.auth.us-east-2.amazoncognito.com/login?client_id=75ohe7ossges61b7uk0t94nhf2&response_type=token&scope=openid&redirect_uri=${getRedirectUrl()}`
       } else {
         setAccessToken(accessTokenParam);
         setIsLoading(false);
@@ -36,8 +46,7 @@ export function AuthContextProvider({ children }) {
     localStorage.removeItem(IS_AUTH);
     localStorage.removeItem(ACCESS_TOKEN);
 
-    window.location =
-      'https://login-ech.auth.us-east-1.amazoncognito.com/login?client_id=2ot0m819qsr7b61q0lff6k0g1n&response_type=token&scope=openid&redirect_uri=https://klc.cec.ecloudapp.cloud/';
+    window.location = `https://devhbes.auth.us-east-2.amazoncognito.com/logout?client_id=75ohe7ossges61b7uk0t94nhf2&logout_uri=${getRedirectUrl()}`
   });
 
   const value = useMemo(

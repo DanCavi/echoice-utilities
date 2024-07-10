@@ -16,9 +16,9 @@ const SearchRut = Loadable(lazy(() => import('views/search')));
 const MainRoutes = {
   path: '/',
   element:
-    // <RouteGuard>
+    <RouteGuard>
       <MainLayout />
-    // </RouteGuard>
+    </RouteGuard>
     ,
   children: [
     {
