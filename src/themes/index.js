@@ -49,6 +49,8 @@ export const theme = (customization) => {
   const themes = createTheme(themeOptions);
   themes.components = componentStyleOverrides(themeOption);
 
+  console.log('themes: ', themes);
+
   return themes;
 };
 

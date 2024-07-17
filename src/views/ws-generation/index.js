@@ -1,13 +1,13 @@
 import { Button, Stack } from '@mui/material';
+import { DataGrid } from '@mui/x-data-grid';
 import TreeView from 'dev-components/TreeView';
+import WSStepper from 'dev-components/WSStepper';
 import { useState } from 'react';
 import CustomInput from 'ui-component/Input/CustomInput';
 import SelectStandar from 'ui-component/Select/Select';
 import TituloStandar from 'ui-component/Titulo/TituloStandar';
 import MainCard from 'ui-component/cards/MainCard';
-
-const USERS = ['John Doe', 'Alex John', 'Ajay Dev', 'Mary Alex', 'John Doe', 'Alex John', 'Ajay Dev', 'Mary Alex'];
-
+import SubCard from 'ui-component/cards/SubCard';
 const WSGeneration = () => {
 
   const [numUsers, setNumUsers] = useState(1);
@@ -15,33 +15,41 @@ const WSGeneration = () => {
 
   return (
     <MainCard title="Web Service Generation">
-
       <Stack spacing={2}>
 
+        <SubCard title="Generar Web Service">
 
-      {
-        Array.from({ length: numUsers }, (_, i) => (
-          <div>
-            <TituloStandar key={`${i}-title`} titulo={`Usuario ${i + 1}`} />
-            <SelectStandar key={`${i}-select`} datos={USERS} />
-          </div>
-        )
-      )
-    }
-    </Stack>
+          <WSStepper />
 
-    <Stack direction={'row'} spacing={2} my={1}>
+        </SubCard>
 
-      {numUsers < USERS.length && <Button variant='outlined' onClick={() => setNumUsers(numUsers + 1)}>Add User</Button>}
-      {numUsers > 1 && <Button variant='outlined' onClick={() => setNumUsers(numUsers - 1)}>Remove User</Button>}
+        <SubCard title="Web Services List">
+          <DataGrid
+            columns={[
+              {
+                field: 'name',
+                headerName: 'Name',
+                flex: .4
+              },
+              {
+                field: 'ruta',
+                headerName: 'Ruta',
+                flex: 1
+              },
+              {
+                field: 'users',
+                headerName: 'Users',
+                type: 'actions',
+                flex: .4,
+              }
+            ]}
+            rows={[
 
-    </Stack>
-
-    <TituloStandar titulo="Nombre" />
-    <CustomInput />
-
-    <TreeView />
-      
+            ]}
+            autoHeight
+          />
+        </SubCard>
+      </Stack>
     </MainCard>
   );
 };

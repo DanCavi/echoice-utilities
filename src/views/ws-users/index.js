@@ -6,6 +6,7 @@ import { INITIAL_ROWS_USERS } from 'dev-constants';
 import DialogForm from 'dev-components/DialogForm';
 import SubCard from 'ui-component/cards/SubCard';
 import { Stack } from '@mui/material';
+import UsuarioStepper from 'dev-components/UsuarioStepper';
 
 const COLUMNS = [
   {
@@ -63,6 +64,7 @@ const WSUsers = () => {
     
     <SubCard title="Crear Usuario">
 
+      <UsuarioStepper />
 
 
 
