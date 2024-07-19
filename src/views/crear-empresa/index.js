@@ -1,9 +1,10 @@
 import { Stack } from "@mui/material"
 import { DataGrid, GridActionsCellItem } from "@mui/x-data-grid"
 import { IconEdit, IconEye, IconPlugConnected, IconTrash } from "@tabler/icons-react"
+import axios from "axios"
 import EmpresaStepper from "dev-components/EmpresaStepper"
 import { INITIAL_ROWS_EMPRESAS } from "dev-constants"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import MainCard from "ui-component/cards/MainCard"
 import SubCard from "ui-component/cards/SubCard"
 
@@ -54,6 +55,13 @@ const columns = [
 ]
 
 const CrearEmpresa = () => {
+
+  useEffect(() => {
+    axios.get("http://localhost:3001/empresas").then((res) => {
+      setRows(res.data)
+    })
+  }, [])
+
 
   const [rows, setRows] = useState(INITIAL_ROWS_EMPRESAS)
 

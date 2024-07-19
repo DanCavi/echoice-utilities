@@ -1,8 +1,11 @@
 import { borderRadius, fontWeight } from "@mui/system";
+import { esES } from "@mui/x-data-grid/locales"
 
 export default function componentStyleOverrides(theme) {
   const bgColor = theme.colors?.grey50;
+  const { components } = esES
   return {
+    ...components,
     MuiButton: {
       styleOverrides: {
         root: {

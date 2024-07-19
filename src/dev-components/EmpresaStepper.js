@@ -4,7 +4,7 @@ import TituloStandar from "ui-component/Titulo/TituloStandar";
 import { toCamelCase } from "dev-utils/functions";
 import { useState } from "react";
 
-const steps = ['Step 1', 'Step 2', 'Step 3'];
+const steps = ['Step 1', 'Step 2'];
 const variables = ['Nombre Empresa', 'Identificación Legal', 'País'];
 
 const StepOne = () => {
@@ -60,9 +60,17 @@ const StepThree = () => {
 
 const EmpresaStepper = ({
   activeStep = 0,
-  handleNext,
   handleBack,
 }) => {
+
+  const handleNext = () => {
+
+    setInternalActiveStep(prev => prev + 1)
+  }
+
+  const handleSubmit = () => {
+    console.log('Submit')
+  }
 
 
   const [internalActiveStep, setInternalActiveStep] = useState(activeStep);
@@ -84,7 +92,6 @@ const EmpresaStepper = ({
       <Grid container spacing={2} sx={{ p: 2 }}>
         {internalActiveStep === 0 && <StepOne />}
         {internalActiveStep === 1 && <StepTwo />}
-        {internalActiveStep === 2 && <StepThree />}
       </Grid>
 
       <Stack direction={'row'} justifyContent="space-between" >
@@ -97,11 +104,10 @@ const EmpresaStepper = ({
           Back
         </Button>
         <Button
-          variant="outlined"
-          disabled={internalActiveStep === steps.length - 1}
-          onClick={handleNext ? handleNext : () => setInternalActiveStep(prev => prev + 1)}
+          variant={internalActiveStep === steps.length - 1 ? 'contained' : 'outlined'}
+          onClick={internalActiveStep === steps.length - 1 ? handleSubmit : handleNext}
         >
-          Next
+          {internalActiveStep === steps.length - 1 ? 'Save' : 'Next'}
 
         </Button>
 

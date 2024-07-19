@@ -1,0 +1,14 @@
+{
+  "empresas": [
+    {
+      "name": "HTML",
+      "id": "1"
+    },
+    {
+      "id": "10cc",
+      "name": "Amazon",
+      "identification": "6132",
+      "country": "Chile"
+    }
+  ]
+}
