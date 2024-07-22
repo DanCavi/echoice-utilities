@@ -57,7 +57,7 @@ const columns = [
 const CrearEmpresa = () => {
 
   useEffect(() => {
-    axios.get("http://localhost:3001/empresas").then((res) => {
+    axios.get("http://10.8.0.3:3001/empresas").then((res) => {
       setRows(res.data)
     })
   }, [])
