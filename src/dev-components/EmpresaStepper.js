@@ -1,59 +1,26 @@
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, Stack, Step, StepLabel, Stepper } from "@mui/material"
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, Stack, Step, StepContent, StepLabel, Stepper, Typography } from "@mui/material"
 import CustomInput from "ui-component/Input/CustomInput";
 import TituloStandar from "ui-component/Titulo/TituloStandar";
 import { toCamelCase } from "dev-utils/functions";
 import { useState } from "react";
+import axios from "axios";
 
-const steps = ['Step 1', 'Step 2'];
-const variables = ['Nombre Empresa', 'Identificación Legal', 'País'];
+const steps = ['Required', 'Optional'];
 
-const StepOne = () => {
-
+const StepInputs = ({ 
+  active = false,
+  fields = ['Name', 'Email', 'Phone Number', 'Address']
+}) => {
   return (
 
-
-    variables.map((name) => {
-      return (
-        <Grid item xs={4}>
+    <Grid container spacing={2} sx={{ p: 2, display: active ? 'flex' : 'none' }}>
+      {fields.map((name) => (
+        <Grid item xs={4} key={name}>
           <TituloStandar titulo={name} />
           <CustomInput name={toCamelCase(name)} />
         </Grid>
-      )
-    })
-  )
-}
-
-const StepTwo = () => {
-
-  const vars = ['Correo', 'Telefono', 'Dirección']
-
-  return (
-
-    vars.map((name) => {
-      return (
-        <Grid item xs={4}>
-          <TituloStandar titulo={`${name}`} />
-          <CustomInput name={toCamelCase(name)} />
-        </Grid>
-      )
-    })
-
-  )
-}
-
-const StepThree = () => {
-
-  return (
-
-
-    variables.map((name) => {
-      return (
-        <Grid item xs={4}>
-          <TituloStandar titulo={`${name}`} />
-          <CustomInput name={toCamelCase(name)} />
-        </Grid>
-      )
-    })
+      ))}
+    </Grid>
   )
 }
 
@@ -61,38 +28,77 @@ const StepThree = () => {
 const EmpresaStepper = ({
   activeStep = 0,
   handleBack,
+  setRows,
+  scrollInto,
+  setSnackbar,
 }) => {
 
   const handleNext = () => {
-
     setInternalActiveStep(prev => prev + 1)
   }
 
-  const handleSubmit = () => {
-    console.log('Submit')
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if (internalActiveStep === steps.length - 1) {
+
+      const data = new FormData(e.target)
+      const formDataObject = {};
+
+      data.forEach((value, key) => {
+        formDataObject[key] = value
+      })
+      axios.post('http://10.8.0.3:3001/empresas', formDataObject)
+        .then((res) => {
+          if (res.status === 201) {
+            setRows(prev => [...prev, res.data])
+            e.target.reset()
+            setInternalActiveStep(0)
+
+            if (setSnackbar) {
+              setSnackbar({
+                open: true,
+                message: 'New Company Added',
+                severity: 'success'
+              })
+            }
+
+            if (scrollInto) {
+              scrollInto.scrollIntoView({ behavior: 'smooth', block: 'center' })
+            }
+          }
+        })
+
+    } else {
+      handleNext()
+    }
   }
 
 
   const [internalActiveStep, setInternalActiveStep] = useState(activeStep);
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box
+      component={'form'}
+      sx={{ width: '100%' }}
+      onSubmit={handleSubmit}
+    >
 
 
-      <Stepper activeStep={internalActiveStep}>
-        {steps.map((label) => {
+      <Stepper activeStep={internalActiveStep} alternativeLabel >
+        {steps.map((label, i) => {
+          const optionalProps = {};
+
           return (
             <Step key={label}>
-              <StepLabel>{label}</StepLabel>
+              <StepLabel optional={i !==0 ? <Typography variant="caption">Optional</Typography> : null} ></StepLabel>
             </Step>
+
           )
         })}
       </Stepper>
 
-      <Grid container spacing={2} sx={{ p: 2 }}>
-        {internalActiveStep === 0 && <StepOne />}
-        {internalActiveStep === 1 && <StepTwo />}
-      </Grid>
+      <StepInputs active={internalActiveStep === 0} fields={['Name', 'Legal Identification', 'Country']} />
+      <StepInputs active={internalActiveStep === 1} fields={['Email', 'Phone Number', 'Address']} />
 
       <Stack direction={'row'} justifyContent="space-between" >
 
@@ -105,9 +111,10 @@ const EmpresaStepper = ({
         </Button>
         <Button
           variant={internalActiveStep === steps.length - 1 ? 'contained' : 'outlined'}
-          onClick={internalActiveStep === steps.length - 1 ? handleSubmit : handleNext}
+          type='submit'
         >
           {internalActiveStep === steps.length - 1 ? 'Save' : 'Next'}
+
 
         </Button>
 
