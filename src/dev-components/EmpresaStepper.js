@@ -7,7 +7,7 @@ import axios from "axios";
 
 const steps = ['Required', 'Optional'];
 
-const StepInputs = ({ 
+const StepInputs = ({
   active = false,
   fields = ['Name', 'Email', 'Phone Number', 'Address']
 }) => {
@@ -90,7 +90,7 @@ const EmpresaStepper = ({
 
           return (
             <Step key={label}>
-              <StepLabel optional={i !==0 ? <Typography variant="caption">Optional</Typography> : null} ></StepLabel>
+              <StepLabel optional={i !== 0 ? <Typography variant="caption">Optional</Typography> : null} ></StepLabel>
             </Step>
 
           )
