@@ -60,28 +60,17 @@ const CrearEmpresa = () => {
           icon={<IconTrash />}
           label="Eliminar"
           onClick={() => {
-            axios.delete(`http://10.8.0.3:3001/empresas/${params.id}`).then((res) => {
-              if (res.status === 200) {
-                setRows(rows.filter(row => row.id !== params.id))
-                setSnackbar({
-                  open: true,
-                  message: 'Deleted successfully',
-                  severity: 'success'
-                })
-              }
+            setRows(rows.filter(row => row.id !== params.id))
+            setSnackbar({
+              open: true,
+              message: 'Deleted successfully',
+              severity: 'success'
             })
           }}
         />,
       ]
     }
   ]
-
-
-  useEffect(() => {
-    axios.get("http://10.8.0.3:3001/empresas").then((res) => {
-      setRows(res.data)
-    })
-  }, [])
 
 
   const [rows, setRows] = useState(INITIAL_ROWS_EMPRESAS)

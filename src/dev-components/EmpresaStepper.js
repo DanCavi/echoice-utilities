@@ -42,31 +42,25 @@ const EmpresaStepper = ({
     if (internalActiveStep === steps.length - 1) {
 
       const data = new FormData(e.target)
-      const formDataObject = {};
+      const formDataObject = { id: Date.now() };
 
       data.forEach((value, key) => {
         formDataObject[key] = value
       })
-      axios.post('http://10.8.0.3:3001/empresas', formDataObject)
-        .then((res) => {
-          if (res.status === 201) {
-            setRows(prev => [...prev, res.data])
-            e.target.reset()
-            setInternalActiveStep(0)
-
-            if (setSnackbar) {
-              setSnackbar({
-                open: true,
-                message: 'New Company Added',
-                severity: 'success'
-              })
-            }
-
-            if (scrollInto) {
-              scrollInto.scrollIntoView({ behavior: 'smooth', block: 'center' })
-            }
-          }
+      setRows(prev => [...prev, formDataObject])
+      e.target.reset()
+      if (setSnackbar) {
+        setSnackbar({
+          open: true,
+          message: 'New Company Added',
+          severity: 'success'
         })
+      }
+        setInternalActiveStep(0)
+        if (scrollInto) {
+          scrollInto.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        }
+      
 
     } else {
       handleNext()
