@@ -2,7 +2,7 @@ import { IconSettings, IconDeviceFloppy, IconGitFork, IconManualGearbox, IconAna
 
 import './styles.css';
 
-const icons = { IconSettings, IconDeviceFloppy, IconGitFork, IconManualGearbox, IconAnalyze, IconDashboard, IconFileAnalytics, IconUsersGroup, IconPlugConnected, IconSearch, IconChartDots3 };
+const icons = { IconFileAnalytics, IconSettings, IconDeviceFloppy, IconGitFork, IconManualGearbox, IconAnalyze, IconDashboard, IconFileAnalytics, IconUsersGroup, IconPlugConnected, IconSearch, IconChartDots3 };
 // ==============================|| MENU ITEMS ||============================== //
 
 const menuItems = {
@@ -43,6 +43,14 @@ const menuItems = {
           breadcrumbs: false
         },
         {
+          id: 'perfiles',
+          title: 'Perfiles',
+          type: 'item',
+          url: '/perfiles',
+          icon: icons.IconFileAnalytics,
+          breadcrumbs: false
+        },
+        {
           id: 'ws-generation',
           title: 'Web Service Generation',
           type: 'item',
@@ -51,10 +59,10 @@ const menuItems = {
           breadcrumbs: false
         },
         {
-          id: 'search',
-          title: 'Search',
+          id: 'test',
+          title: 'Test',
           type: 'item',
-          url: '/search',
+          url: '/test',
           icon: icons.IconSearch,
           breadcrumbs: false
         },

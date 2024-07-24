@@ -36,6 +36,12 @@ const CrearEmpresa = () => {
       flex: 1
     },
     {
+      field: 'state',
+      headerName: 'Activo',
+      type: 'boolean',
+      flex: .3
+    },
+    {
       field: 'actions',
       headerName: 'Acciones',
       flex: .6,
@@ -49,13 +55,24 @@ const CrearEmpresa = () => {
         <GridActionsCellItem
           icon={<IconPlugConnected />}
           label="Conectar"
-          onClick={() => console.log(params)}
+          onClick={() => {
+            setRows(prev => {
+              return prev.map(row => {
+                if (row.id === params.id) {
+                  return {
+                    ...row,
+                    state: !row.state
+                  }
+                }
+                return row
+              })
+            })
+          }}
         />,
         <GridActionsCellItem
           icon={<IconEdit />}
           label="Editar"
           onClick={() => {
-            console.log(params)
             const form = formRef.current
             Object.keys(params.row).forEach(key => {
               if (form[key]) {
