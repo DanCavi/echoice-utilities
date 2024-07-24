@@ -54,7 +54,17 @@ const CrearEmpresa = () => {
         <GridActionsCellItem
           icon={<IconEdit />}
           label="Editar"
-          onClick={() => console.log(params)}
+          onClick={() => {
+            console.log(params)
+            const form = formRef.current
+            Object.keys(params.row).forEach(key => {
+              if (form[key]) {
+                form[key].value = params.row[key]
+              }
+            })
+            form.scrollIntoView({ behavior: 'smooth', block: 'center' })
+            
+          }}
         />,
         <GridActionsCellItem
           icon={<IconTrash />}
@@ -74,6 +84,7 @@ const CrearEmpresa = () => {
 
 
   const [rows, setRows] = useState(INITIAL_ROWS_EMPRESAS)
+  const formRef = useRef(null)
 
 
   return (
@@ -85,6 +96,7 @@ const CrearEmpresa = () => {
             setRows={setRows}
             scrollInto={ref.current}
             setSnackbar={setSnackbar}
+            formRef={formRef}
           />
         </SubCard>
         <SubCard title="Lista de Empresas"

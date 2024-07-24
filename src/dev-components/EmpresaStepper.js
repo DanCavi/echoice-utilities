@@ -2,7 +2,7 @@ import { Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, D
 import CustomInput from "ui-component/Input/CustomInput";
 import TituloStandar from "ui-component/Titulo/TituloStandar";
 import { toCamelCase } from "dev-utils/functions";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import axios from "axios";
 
 const steps = ['Required', 'Optional'];
@@ -31,19 +31,21 @@ const EmpresaStepper = ({
   setRows,
   scrollInto,
   setSnackbar,
+  formRef
 }) => {
 
+  
   const handleNext = () => {
     setInternalActiveStep(prev => prev + 1)
   }
-
+  
   const handleSubmit = (e) => {
     e.preventDefault()
     if (internalActiveStep === steps.length - 1) {
-
+      
       const data = new FormData(e.target)
       const formDataObject = { id: Date.now() };
-
+      
       data.forEach((value, key) => {
         formDataObject[key] = value
       })
@@ -56,25 +58,25 @@ const EmpresaStepper = ({
           severity: 'success'
         })
       }
-        setInternalActiveStep(0)
-        if (scrollInto) {
-          scrollInto.scrollIntoView({ behavior: 'smooth', block: 'center' })
-        }
+      setInternalActiveStep(0)
+      if (scrollInto) {
+        scrollInto.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      }
       
-
+      
     } else {
       handleNext()
     }
   }
-
-
+  
   const [internalActiveStep, setInternalActiveStep] = useState(activeStep);
-
+  
   return (
     <Box
       component={'form'}
       sx={{ width: '100%' }}
       onSubmit={handleSubmit}
+      ref={formRef}
     >
 
 
