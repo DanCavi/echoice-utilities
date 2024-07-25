@@ -61,26 +61,26 @@ const WSUsers = () => {
       <Stack spacing={2}>
 
 
-    
-    <SubCard title="Crear Usuario">
 
-      <UsuarioStepper />
+        <SubCard title="Crear Usuario">
 
-
-
-    </SubCard>
+          <UsuarioStepper />
 
 
-    <SubCard title="Lista de Usuarios">
 
-      <DataGrid
-        rows={rows}
-        columns={COLUMNS}
-        autoHeight
-        />
-      </SubCard>
+        </SubCard>
 
-        </Stack>
+
+        <SubCard title="Lista de Usuarios">
+
+          <DataGrid
+            rows={rows}
+            columns={COLUMNS}
+            autoHeight
+          />
+        </SubCard>
+
+      </Stack>
       <DialogForm open={open} onClose={() => setOpen(false)} />
 
     </MainCard>
