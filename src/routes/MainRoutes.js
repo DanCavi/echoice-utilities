@@ -6,6 +6,7 @@ import Loadable from 'ui-component/Loadable';
 import RouteGuard from 'Aoth/RouteGuard';
 import CrearEmpresa from 'views/crear-empresa';
 import Perfiles from 'views/perfiles';
+import Consumo from 'views/consumo';
 const Dashboard = Loadable(lazy(() => import('views/dashboard')));
 const DataSourceIntegration = Loadable(lazy(() => import('views/data-source-integration')));
 const WSGeneration = Loadable(lazy(() => import('views/ws-generation')));
@@ -53,6 +54,10 @@ const MainRoutes = {
     {
       path: 'perfiles',
       element: <Perfiles />
+    },
+    {
+      path: 'consumo',
+      element: <Consumo />
     }
   ]
 };

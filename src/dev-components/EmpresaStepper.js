@@ -1,29 +1,8 @@
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, Stack, Step, StepContent, StepLabel, Stepper, Typography } from "@mui/material"
-import CustomInput from "ui-component/Input/CustomInput";
-import TituloStandar from "ui-component/Titulo/TituloStandar";
-import { toCamelCase } from "dev-utils/functions";
-import { useRef, useState } from "react";
-import axios from "axios";
+import { Box, Button, Stack, Step, StepLabel, Stepper, Typography } from "@mui/material"
+import { useState } from "react";
+import StepInputs from "dev-components/steppers/StepInputs";
 
 const steps = ['Required', 'Optional'];
-
-const StepInputs = ({
-  active = false,
-  fields = ['Name', 'Email', 'Phone Number', 'Address']
-}) => {
-  return (
-
-    <Grid container spacing={2} sx={{ p: 2, display: active ? 'flex' : 'none' }}>
-      {fields.map((name) => (
-        <Grid item xs={4} key={name}>
-          <TituloStandar titulo={name} />
-          <CustomInput name={toCamelCase(name)} />
-        </Grid>
-      ))}
-    </Grid>
-  )
-}
-
 
 const EmpresaStepper = ({
   activeStep = 0,
@@ -63,7 +42,6 @@ const EmpresaStepper = ({
         scrollInto.scrollIntoView({ behavior: 'smooth', block: 'center' })
       }
       
-      
     } else {
       handleNext()
     }
@@ -76,7 +54,7 @@ const EmpresaStepper = ({
       component={'form'}
       sx={{ width: '100%' }}
       onSubmit={handleSubmit}
-      ref={formRef}
+      ref={formRef ? formRef : null}
     >
 
 
@@ -93,8 +71,14 @@ const EmpresaStepper = ({
         })}
       </Stepper>
 
-      <StepInputs active={internalActiveStep === 0} fields={['Name', 'Legal Identification', 'Country']} />
-      <StepInputs active={internalActiveStep === 1} fields={['Email', 'Phone Number', 'Address']} />
+      <StepInputs 
+        active={internalActiveStep === 0}
+        fields={['Name', 'Legal Identification', 'Country']}
+      />
+      <StepInputs
+        active={internalActiveStep === 1} 
+        fields={['Email', 'Phone Number', 'Address']}
+      />
 
       <Stack direction={'row'} justifyContent="space-between" >
 

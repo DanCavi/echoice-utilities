@@ -9,49 +9,19 @@ import SubCard from 'ui-component/cards/SubCard';
 
 const Dashboard = () => {
   
-  const columns = [
-    { field: 'origin-name', headerName: 'Nombre Origen', flex: 1 },
-    { field: 'service', headerName: 'Servicio', flex: 1 },
-    { field: 'user', headerName: 'Usuario', flex: 1 },
-    { field: 'date', headerName: 'Fecha', flex: 1 },
-    { field: 'type', headerName: 'Tipo', flex: .5 },
-  ]
+ 
 
   return (
     <MainCard title="Dashboard">
       <Stack spacing={2}>
-        <Stack direction="row" spacing={2}>
 
         <SubCard title="Consultas Bureau" sx={{ flex: 1 }}>
           <LineChart />
         </SubCard>
-        <SubCard title="Porcentaje de Almacenamiento" sx={{ flex: 1 }}>
-          <PieChart />
-        </SubCard>
-        </Stack>
         <SubCard title="Bureau vs Cache">
           <BarChart />
         </SubCard>
-        <SubCard title="Consultas HBES">
-          <Box p={2}>
-            <DataGrid
-              columns={columns}
-              rows={[]}
-              autoHeight
-              initialState={{
-                pagination: {
-                  paginationModel: { pageSize: 5 }}
-              }}
-              pageSizeOptions={[5, 10, 20]}
-              slotProps={{
-                toolbar: {
-                  showQuickFilter: true
-                }
-              }}
-              slots={{ toolbar: GridToolbar }}
-              />   
-          </Box>
-        </SubCard>
+        
       </Stack>
     </MainCard>
   );

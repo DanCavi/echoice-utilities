@@ -1,5 +1,6 @@
-import { Stack } from "@mui/material"
+import { Button, Stack } from "@mui/material"
 import { DataGrid } from "@mui/x-data-grid"
+import { IconDeviceFloppy } from "@tabler/icons-react"
 import MainCard from "ui-component/cards/MainCard"
 import SubCard from "ui-component/cards/SubCard"
 
@@ -81,11 +82,17 @@ const Perfiles = () => {
     <MainCard title="Perfiles">
       <Stack spacing={2}>
         <SubCard title="Crear Perfil">
+          <Stack spacing={2}>
 
+          <SubCard title="Información">
+
+          </SubCard>
           
-
+          <Button variant="contained" startIcon={<IconDeviceFloppy />}>Crear Perfil</Button>
+          </Stack>
         </SubCard>
         <SubCard title="Lista Perfiles">
+          
 
           <DataGrid
             rows={[]}

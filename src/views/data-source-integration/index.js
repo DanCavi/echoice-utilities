@@ -81,25 +81,6 @@ const DataSourceIntegration = () => {
 
       </SubCard>
 
-      <SubCard title="Parametros de Salida" sx={{ mt: 2 }}>
-        <Stack direction="column" spacing={2} p={2}>
-          <div>
-            <TituloStandar titulo="Response" />
-            <SelectStandar datos={['JSON', 'XML']} />
-          </div>
-          {Array.from({ length: numResponseVars }, (_, i) => (
-            <VariableField key={i} numVars={i + 1} />
-          ))}
-        </Stack>
-
-
-        <Stack direction="row" spacing={2} px={4} >
-          <Button variant="outlined" startIcon={<IconPlus />} onClick={() => setNumResponseVars(numResponseVars + 1)}>Añadir Variable</Button>
-          {numResponseVars > 1 && <Button variant="outlined" startIcon={<IconTrash />} color="error" onClick={() => setNumResponseVars(numResponseVars - 1)}>Eliminar Variable</Button>}
-        </Stack>
-
-      </SubCard>
-
 
       <Stack direction="row" spacing={2} justifyContent={'center'} sx={{ my: 2, mx: 40 }}>
         <div

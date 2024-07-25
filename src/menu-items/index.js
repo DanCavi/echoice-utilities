@@ -35,6 +35,13 @@ const menuItems = {
           breadcrumbs: false
         },
         {
+          id: 'salida-ws',
+          title: 'Salida Web Service',
+          type: 'item',
+          url: '/salida-ws',
+          icon: icons.IconGitFork,
+        },
+        {
           id: 'ws-users',
           title: 'Web Service Users',
           type: 'item',
@@ -51,10 +58,26 @@ const menuItems = {
           breadcrumbs: false
         },
         {
+          id: 'consumo',
+          title: 'Consumo',
+          type: 'item',
+          url: '/consumo',
+          icon: icons.IconManualGearbox,
+          breadcrumbs: false
+        },
+        {
           id: 'ws-generation',
           title: 'Web Service Generation',
           type: 'item',
           url: '/ws-generation',
+          icon: icons.IconChartDots3,
+          breadcrumbs: false
+        },
+        {
+          id: 'variable-workshop',
+          title: 'Variable Workshop',
+          type: 'item',
+          url: '/variable-workshop',
           icon: icons.IconChartDots3,
           breadcrumbs: false
         },
