@@ -1,12 +1,17 @@
-import { Button, Stack } from "@mui/material"
+import { Button, Grid, Stack } from "@mui/material"
 import { DataGrid } from "@mui/x-data-grid"
 import { IconDeviceFloppy } from "@tabler/icons-react"
+import { toCamelCase } from "dev-utils/functions"
 import MainCard from "ui-component/cards/MainCard"
 import SubCard from "ui-component/cards/SubCard"
+import CustomInput from "ui-component/Input/CustomInput"
+import TituloStandar from "ui-component/Titulo/TituloStandar"
 
 const Perfiles = () => {
 
 
+  const fields = ['Nombre', 'Abreviatura']
+  const modules = ['Dashboard', 'Crear Empresa', 'Data Source Integration', 'Salida Web Service', 'Web Service Users', 'Perfiles', 'Consumo', 'Web Service Generation', 'Variable Workshop', 'Test']
 
   const columns = [
     {
@@ -85,14 +90,36 @@ const Perfiles = () => {
           <Stack spacing={2}>
 
           <SubCard title="Información">
+            <Stack spacing={2}>
 
+            {fields.map((name) => (
+              <div>
+              <TituloStandar key={name} titulo={name} />
+              <CustomInput name={toCamelCase(name)} />
+              </div>
+            ))}
+            </Stack>
+
+          </SubCard>
+
+          <SubCard title="Recursos">
+            <Grid container spacing={2}>
+
+
+            {modules.map((name) => (
+              <Grid item xs={12}>
+                <TituloStandar key={name} titulo={name} />
+              </Grid>
+            ))}
+
+            </Grid>
           </SubCard>
           
           <Button variant="contained" startIcon={<IconDeviceFloppy />}>Crear Perfil</Button>
           </Stack>
         </SubCard>
         <SubCard title="Lista Perfiles">
-          
+
 
           <DataGrid
             rows={[]}
