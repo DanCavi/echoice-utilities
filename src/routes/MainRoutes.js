@@ -4,14 +4,15 @@ import { lazy } from 'react';
 import MainLayout from 'layout/MainLayout';
 import Loadable from 'ui-component/Loadable';
 import RouteGuard from 'Aoth/RouteGuard';
-import CrearEmpresa from 'views/crear-empresa';
-import Perfiles from 'views/perfiles';
-import Consumo from 'views/consumo';
 const Dashboard = Loadable(lazy(() => import('views/dashboard')));
 const DataSourceIntegration = Loadable(lazy(() => import('views/data-source-integration')));
 const WSGeneration = Loadable(lazy(() => import('views/ws-generation')));
 const WSUsers = Loadable(lazy(() => import('views/ws-users')));
 const SearchRut = Loadable(lazy(() => import('views/search')));
+const CrearEmpresa = Loadable(lazy(() => import('views/crear-empresa')));
+const Perfiles = Loadable(lazy(() => import('views/perfiles')));
+const Consumo = Loadable(lazy(() => import('views/consumo')));
+const SalidaWS = Loadable(lazy(() => import('views/salida-ws')));
 
 // ==============================|| MAIN ROUTING ||============================== //
 
@@ -58,6 +59,10 @@ const MainRoutes = {
     {
       path: 'consumo',
       element: <Consumo />
+    },
+    {
+      path: 'salida-ws',
+      element: <SalidaWS />
     }
   ]
 };

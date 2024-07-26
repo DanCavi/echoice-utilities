@@ -56,22 +56,27 @@ const DataSourceIntegration = () => {
       <SubCard title="Crear Servicio">
 
         <SubCard title="Información">
-          <Stack direction={"row"} spacing={2}>
+          <Grid container spacing={3}>
+            <Grid item xs={4}>
 
-            <div>
               <TituloStandar titulo="Nombre de Origen" />
-              <SelectStandar datos={['KLC, CCS']} />
-            </div>
-            <div>
-              <TituloStandar titulo="Nombre de Origen" />
-              <SelectStandar datos={['KLC, CCS']} />
-            </div>
-            <div>
-              <TituloStandar titulo="Nombre de Origen" />
-              <SelectStandar datos={['KLC, CCS']} />
-            </div>
+              <SelectStandar datos={['KLC']} />
 
-          </Stack>
+            </Grid>
+            <Grid item xs={4}>
+
+              <TituloStandar titulo="Nombre del Servicio" />
+              <CustomInput />
+
+            </Grid>
+            <Grid item xs={4}>
+
+              <TituloStandar titulo="Versión" />
+              <CustomInput />
+
+            </Grid>
+
+          </Grid>
         </SubCard>
 
 

@@ -102,7 +102,8 @@ const menuItems = {
           type: 'item',
           url: '/system-option',
           icon: icons.IconSettings,
-          breadcrumbs: false
+          breadcrumbs: false,
+          disabled: true,
         }
       ]
     }

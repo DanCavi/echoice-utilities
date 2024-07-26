@@ -1,4 +1,4 @@
-import { Button, Grid, Stack } from "@mui/material"
+import { Button, Checkbox, Grid, Stack } from "@mui/material"
 import { DataGrid } from "@mui/x-data-grid"
 import { IconDeviceFloppy } from "@tabler/icons-react"
 import { toCamelCase } from "dev-utils/functions"
@@ -107,9 +107,16 @@ const Perfiles = () => {
 
 
             {modules.map((name) => (
-              <Grid item xs={12}>
+              <>
+              <Grid item xs={4}>
                 <TituloStandar key={name} titulo={name} />
               </Grid>
+              {Array.from({ length: 4}).map(() => (
+                <Grid item xs={2}>
+                  <Checkbox />
+                </Grid>
+              ))}
+              </>
             ))}
 
             </Grid>

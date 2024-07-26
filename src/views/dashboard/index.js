@@ -6,6 +6,8 @@ import PieChart from 'dev-components/charts/PieChart';
 import SelectStandar from 'ui-component/Select/Select';
 import MainCard from 'ui-component/cards/MainCard';
 import SubCard from 'ui-component/cards/SubCard';
+import TogglePeriod from 'dev-components/toggleButtons/togglePeriod';
+
 
 const Dashboard = () => {
   
@@ -13,6 +15,9 @@ const Dashboard = () => {
 
   return (
     <MainCard title="Dashboard">
+
+      <TogglePeriod />
+
       <Stack spacing={2}>
 
         <SubCard title="Consultas Bureau" sx={{ flex: 1 }}>

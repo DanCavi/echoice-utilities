@@ -3,6 +3,8 @@ import { IconBan, IconEdit } from '@tabler/icons-react';
 import { useState } from 'react';
 import MainCard from 'ui-component/cards/MainCard';
 import { INITIAL_ROWS_USERS } from 'dev-constants';
+
+
 import DialogForm from 'dev-components/DialogForm';
 import SubCard from 'ui-component/cards/SubCard';
 import { Stack } from '@mui/material';
@@ -60,13 +62,9 @@ const WSUsers = () => {
 
       <Stack spacing={2}>
 
-
-
         <SubCard title="Crear Usuario">
 
           <UsuarioStepper />
-
-
 
         </SubCard>
 
