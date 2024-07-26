@@ -35,7 +35,7 @@ const DataSourceIntegration = () => {
 
   return (
     <MainCard title="Data Soure Integration">
-      <Grid container spacing={3}>
+      {/* <Grid container spacing={3}>
         <Grid item xs={4}>
 
           <TituloStandar titulo="Nombre de Origen" />
@@ -51,50 +51,75 @@ const DataSourceIntegration = () => {
           <TituloStandar titulo="Tipo Persona" />
           <SelectStandar datos={['Natural', 'Jurídica', 'Ambas']} />
         </Grid>
-      </Grid>
-      <SubCard title="Parametros de entrada" sx={{ mt: 2 }} >
-        <Stack direction="column" spacing={2} p={2}>
-          <div>
-            <TituloStandar titulo="Tipo de Servicio" />
-            <SelectStandar datos={['Soap', 'REST-GET', 'REST-POST']} value={tipoServicio} onChange={(e) => setTipoServicio(e.target.value)} />
-          </div>
+      </Grid> */}
 
-          {tipoServicio === 'Soap' && (
-            <CustomInput multiline placeholder={EXAMPLE_SOAP} minRows={15} />
-          )}
+      <SubCard title="Crear Servicio">
 
-          {tipoServicio === 'REST-POST' && (
-            <CustomInput multiline placeholder={EXAMPLE_REST_POST} minRows={5} />
-          )}
+        <SubCard title="Información">
+          <Stack direction={"row"} spacing={2}>
+
+            <div>
+              <TituloStandar titulo="Nombre de Origen" />
+              <SelectStandar datos={['KLC, CCS']} />
+            </div>
+            <div>
+              <TituloStandar titulo="Nombre de Origen" />
+              <SelectStandar datos={['KLC, CCS']} />
+            </div>
+            <div>
+              <TituloStandar titulo="Nombre de Origen" />
+              <SelectStandar datos={['KLC, CCS']} />
+            </div>
+
+          </Stack>
+        </SubCard>
 
 
-          {Array.from({ length: numVars }, (_, i) => (
-            <VariableField key={i} numVars={i + 1} />
-          ))}
+        <SubCard title="Parametros de entrada" sx={{ mt: 2 }} >
+          <Stack direction="column" spacing={2} p={2}>
+            <div>
+              <TituloStandar titulo="Tipo de Servicio" />
+              <SelectStandar datos={['Soap', 'REST-GET', 'REST-POST']} value={tipoServicio} onChange={(e) => setTipoServicio(e.target.value)} />
+            </div>
 
-        </Stack>
+            {tipoServicio === 'Soap' && (
+              <CustomInput multiline placeholder={EXAMPLE_SOAP} minRows={15} />
+            )}
 
-        <Stack direction="row" spacing={2} px={4} >
-          <Button variant="outlined" startIcon={<IconPlus />} onClick={() => setNumVars(numVars + 1)}>Añadir Variable</Button>
-          {numVars > 1 && <Button variant="outlined" startIcon={<IconTrash />} color="error" onClick={() => setNumVars(numVars - 1)}>Eliminar Variable</Button>}
-        </Stack>
+            {tipoServicio === 'REST-POST' && (
+              <CustomInput multiline placeholder={EXAMPLE_REST_POST} minRows={5} />
+            )}
+
+
+            {Array.from({ length: numVars }, (_, i) => (
+              <VariableField key={i} numVars={i + 1} />
+            ))}
+
+          </Stack>
+
+          <Stack direction="row" spacing={2} px={4} >
+            <Button variant="outlined" startIcon={<IconPlus />} onClick={() => setNumVars(numVars + 1)}>Añadir Variable</Button>
+            {numVars > 1 && <Button variant="outlined" startIcon={<IconTrash />} color="error" onClick={() => setNumVars(numVars - 1)}>Eliminar Variable</Button>}
+          </Stack>
+
+        </SubCard>
 
       </SubCard>
 
 
       <Stack direction="row" spacing={2} justifyContent={'center'} sx={{ my: 2, mx: 40 }}>
         <div
-          style={{ width: '60%'}}
-          
+          style={{ width: '60%' }}
+
         >
-        <Button fullWidth variant="contained">Ok</Button>
+          <Button fullWidth variant="contained">Ok</Button>
 
         </div>
         <div
-          style={{ width: '60%'}}
+          style={{ width: '60%' }}
         >
 
-        <Button fullWidth variant="contained" >Reset</Button>
+          <Button fullWidth variant="contained" >Reset</Button>
         </div>
       </Stack>
 
