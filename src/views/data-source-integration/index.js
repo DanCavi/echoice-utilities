@@ -1,6 +1,7 @@
 import { Button, Grid, Stack } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 import { IconPlus, IconTrash } from '@tabler/icons-react';
+import JsonField from 'dev-components/JsonField';
 import VariableField from 'dev-components/VariableField';
 import { useState } from 'react';
 import CustomInput from 'ui-component/Input/CustomInput';
@@ -60,7 +61,7 @@ const DataSourceIntegration = () => {
             <Grid item xs={4}>
 
               <TituloStandar titulo="Nombre de Origen" />
-              <SelectStandar datos={['KLC']} />
+              <SelectStandar datos={['CCS']} />
 
             </Grid>
             <Grid item xs={4}>
@@ -76,6 +77,13 @@ const DataSourceIntegration = () => {
 
             </Grid>
 
+            <Grid item xs={8}>
+
+              <TituloStandar titulo="URL" />
+              <CustomInput />
+
+            </Grid>
+
           </Grid>
         </SubCard>
 
@@ -84,7 +92,7 @@ const DataSourceIntegration = () => {
           <Stack direction="column" spacing={2} p={2}>
             <div>
               <TituloStandar titulo="Tipo de Servicio" />
-              <SelectStandar datos={['Soap', 'REST-GET', 'REST-POST']} value={tipoServicio} onChange={(e) => setTipoServicio(e.target.value)} />
+              <SelectStandar datos={['Soap', 'REST-GET', 'REST-POST']} value={tipoServicio} onChange={setTipoServicio} />
             </div>
 
             {tipoServicio === 'Soap' && (
@@ -92,7 +100,8 @@ const DataSourceIntegration = () => {
             )}
 
             {tipoServicio === 'REST-POST' && (
-              <CustomInput multiline placeholder={EXAMPLE_REST_POST} minRows={5} />
+              // <CustomInput multiline placeholder={EXAMPLE_REST_POST} minRows={5} />
+              <JsonField />
             )}
 
 

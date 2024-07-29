@@ -1,13 +1,16 @@
-import { Alert, Snackbar, Stack } from "@mui/material"
+import { Alert, Box, Button, Grid, Snackbar, Stack } from "@mui/material"
 import { DataGrid, GridActionsCellItem } from "@mui/x-data-grid"
 import { IconCheck, IconEdit, IconEye, IconMoodHappy, IconMoodSad, IconPlugConnected, IconPlugConnectedX, IconTrash } from "@tabler/icons-react"
 import axios from "axios"
 import EmpresaStepper from "dev-components/EmpresaStepper"
 import SnackbarAlert from "dev-components/SnackbarAlert"
 import { INITIAL_ROWS_EMPRESAS } from "dev-constants"
+import { toCamelCase } from "dev-utils/functions"
 import { useEffect, useRef, useState } from "react"
 import MainCard from "ui-component/cards/MainCard"
 import SubCard from "ui-component/cards/SubCard"
+import CustomInput from "ui-component/Input/CustomInput"
+import TituloStandar from "ui-component/Titulo/TituloStandar"
 
 
 const CrearEmpresa = () => {
@@ -103,18 +106,32 @@ const CrearEmpresa = () => {
   const [rows, setRows] = useState(INITIAL_ROWS_EMPRESAS)
   const formRef = useRef(null)
 
+  const fields = ['Name', 'Legal Identification', 'Country', 'Email', 'Phone Number', 'Address']
 
   return (
     <MainCard title="Crear Empresa" >
       <Stack spacing={2}>
 
-        <SubCard title="Stepper">
-          <EmpresaStepper
+        <SubCard title="Crear">
+          
+          {/* <EmpresaStepper
             setRows={setRows}
             scrollInto={ref.current}
             setSnackbar={setSnackbar}
             formRef={formRef}
-          />
+          /> */}
+          <Grid container spacing={2}>
+
+          {fields.map((name) => (
+            <Grid item xs={4} key={name}>
+              <TituloStandar titulo={name} />
+              <CustomInput name={toCamelCase(name)} />
+            </Grid>
+          ))}
+          </Grid>
+          <Box width={'100%'} py={2}>
+            <Button variant="contained" fullWidth >Crear</Button>
+          </Box>
         </SubCard>
         <SubCard title="Lista de Empresas"
         >

@@ -45,12 +45,12 @@ export const INITIAL_ROWS_USERS = [
 export const INITIAL_ROWS_EMPRESAS = [
   {
     id: Date.now(),
-    name: 'KLC',
+    name: 'CCS',
     legalIdentification: 'Identificación',
     country: 'Chile',
-    email: 'info@klc.cl',
+    email: 'info@CCS.cl',
     phoneNumber: '+1 3344 55',
-    address: 'Komatsu Lane 1234',
+    address: 'CCS Lane 1234',
     state: 1
   }
 ]

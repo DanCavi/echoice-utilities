@@ -1,13 +1,28 @@
 import { Button, Checkbox, Grid, Stack } from "@mui/material"
-import { DataGrid } from "@mui/x-data-grid"
-import { IconDeviceFloppy } from "@tabler/icons-react"
+import { DataGrid, GridActionsCellItem } from "@mui/x-data-grid"
+import { IconDeviceFloppy, IconEdit, IconEye, IconPlugConnected, IconTrash } from "@tabler/icons-react"
 import { toCamelCase } from "dev-utils/functions"
+import { useState } from "react"
 import MainCard from "ui-component/cards/MainCard"
 import SubCard from "ui-component/cards/SubCard"
 import CustomInput from "ui-component/Input/CustomInput"
 import TituloStandar from "ui-component/Titulo/TituloStandar"
 
 const Perfiles = () => {
+
+  const [rows, setRows] = useState([
+    {
+      id: 1,
+      name: 'Root',
+      state: true
+    }
+  ])
+
+  const [snackbar, setSnackbar] = useState({
+    open: false,
+    message: '',
+    severity: 'success'
+  })
 
 
   const fields = ['Nombre', 'Abreviatura']
@@ -145,7 +160,7 @@ const Perfiles = () => {
 
 
           <DataGrid
-            rows={[]}
+            rows={rows}
             columns={columns}
             autoHeight
           />

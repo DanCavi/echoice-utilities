@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 // importacion de Grid y elementos
@@ -21,10 +21,41 @@ const theme = createTheme({
   }
 });
 
-function SelectStandar({ flex = false, datos = [], value = '', onChange = () => { }, width = '100%', textAlign = 'left', maxHeight = 200, justifyContent = 'flex-start' }) {
-  const valor = datos.includes(value) ? value : ''
+/**
+ * Renders a standard select component with customizable options.
+ *
+ * @param {Object} props - The properties for the select component.
+ * @param {boolean} [props.flex=false] - Whether the select component should take up the full width.
+ * @param {Array} [props.datos=[]] - The options for the select component.
+ * @param {string} [props.value=''] - The selected value of the select component.
+ * @param {function} [props.onChange] - The callback function for when the selected value changes.
+ * @param {string} [props.width='100%'] - The width of the select component.
+ * @param {string} [props.textAlign='left'] - The text alignment of the select component.
+ * @param {number} [props.maxHeight=200] - The maximum height of the select component's dropdown menu.
+ * @param {string} [props.justifyContent='flex-start'] - The justify content of the select component.
+ * @return {JSX.Element} The rendered select component.
+ */
+const SelectStandar = ({
+  flex = false,
+  datos = [],
+  value = '',
+  onChange,
+  width = '100%',
+  textAlign = 'left',
+  maxHeight = 200,
+  justifyContent = 'flex-start'
+}) => {
+  const [selectedValue, setSelectedValue] = useState(datos.includes(value) ? value : '');
+
+
+  const handleChange = (e) => {
+    const newValue = e.target.value;
+    setSelectedValue(e.target.value)
+    if (onChange) onChange(newValue)
+  }
+
   return (
-    <div style={{ textAlign, flex: flex ? 1 : null  }}>
+    <div style={{ textAlign, flex: flex ? 1 : null }}>
       <ThemeProvider theme={theme}>
         <FormControl sx={{ m: 0, width, backgroundColor: '#FAFAFA' }} size="small">
           {/* <InputLabel id="demo-select-small-label">Cliente</InputLabel> */}
@@ -32,8 +63,8 @@ function SelectStandar({ flex = false, datos = [], value = '', onChange = () => 
             MenuProps={{ PaperProps: { style: { maxHeight } } }}
             displayEmpty
             inputProps={{ 'aria-label': 'Without label' }}
-            value={valor}
-            onChange={onChange}
+            value={selectedValue}
+            onChange={handleChange}
             size="small"
             sx={{ textAlign }}
           >
