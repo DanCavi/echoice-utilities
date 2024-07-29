@@ -105,6 +105,22 @@ const Perfiles = () => {
           <SubCard title="Recursos">
             <Grid container spacing={2}>
 
+            <Grid item xs={4}>
+              <TituloStandar  titulo="Modulo" />
+
+            </Grid>
+            <Grid item xs={2}>
+              <TituloStandar titulo="Crear" />
+            </Grid>
+            <Grid item xs={2}>
+              <TituloStandar titulo="Leer" />
+            </Grid>
+            <Grid item xs={2}>
+              <TituloStandar titulo="Actualizar" />
+            </Grid>
+            <Grid item xs={2}>
+              <TituloStandar titulo="Borrar" />
+            </Grid>
 
             {modules.map((name) => (
               <>

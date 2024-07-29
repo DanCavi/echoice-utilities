@@ -74,14 +74,6 @@ const menuItems = {
           breadcrumbs: false
         },
         {
-          id: 'variable-workshop',
-          title: 'Variable Workshop',
-          type: 'item',
-          url: '/variable-workshop',
-          icon: icons.IconChartDots3,
-          breadcrumbs: false
-        },
-        {
           id: 'test',
           title: 'Test',
           type: 'item',
@@ -102,8 +94,15 @@ const menuItems = {
           type: 'item',
           url: '/system-option',
           icon: icons.IconSettings,
-          breadcrumbs: false,
-          disabled: true,
+          breadcrumbs: false
+        },
+        {
+          id: 'variable-workshop',
+          title: 'Variable Workshop',
+          type: 'item',
+          url: '/variable-workshop',
+          icon: icons.IconChartDots3,
+          breadcrumbs: false
         }
       ]
     }

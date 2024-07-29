@@ -13,6 +13,8 @@ const CrearEmpresa = Loadable(lazy(() => import('views/crear-empresa')));
 const Perfiles = Loadable(lazy(() => import('views/perfiles')));
 const Consumo = Loadable(lazy(() => import('views/consumo')));
 const SalidaWS = Loadable(lazy(() => import('views/salida-ws')));
+const VariableWorkshop = Loadable(lazy(() => import('views/variable-workshop')));
+const SystemOption = Loadable(lazy(() => import('views/system-option')));
 
 // ==============================|| MAIN ROUTING ||============================== //
 
@@ -63,6 +65,14 @@ const MainRoutes = {
     {
       path: 'salida-ws',
       element: <SalidaWS />
+    },
+    {
+      path: 'variable-workshop',
+      element: <VariableWorkshop />
+    },
+    {
+      path: 'system-option',
+      element: <SystemOption />
     }
   ]
 };
