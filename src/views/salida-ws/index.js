@@ -1,4 +1,5 @@
 import { Grid, Stack } from "@mui/material"
+import { DataGrid } from "@mui/x-data-grid"
 import MainCard from "ui-component/cards/MainCard"
 import SubCard from "ui-component/cards/SubCard"
 import CustomInput from "ui-component/Input/CustomInput"
@@ -29,6 +30,16 @@ const SalidaWS = () => {
         </SubCard>
 
         <SubCard title="Web Services List">
+
+          <DataGrid
+            rows={[]}
+            columns={[{
+              field: 'name',
+              headerName: 'Name',
+              flex: .4
+            }]}
+            autoHeight
+          />
 
         </SubCard>
       </Stack>
