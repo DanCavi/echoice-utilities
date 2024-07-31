@@ -1,4 +1,4 @@
-import { Button, Grid, Stack } from '@mui/material';
+import { Button, Divider, Grid, Paper, Stack, Tab, Tabs } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 import { IconPlus, IconTrash } from '@tabler/icons-react';
 import JsonField from 'dev-components/JsonField';
@@ -33,6 +33,7 @@ const DataSourceIntegration = () => {
   const [tipoServicio, setTipoServicio] = useState('');
   const [numVars, setNumVars] = useState(1);
   const [numResponseVars, setNumResponseVars] = useState(1);
+  const [value, setValue] = useState(0);
 
   return (
     <MainCard title="Data Soure Integration">
@@ -100,8 +101,48 @@ const DataSourceIntegration = () => {
             )}
 
             {tipoServicio === 'REST-POST' && (
+              <Paper elevation={3} sx={{ width: '100%', p: 2 }}>
+              <Stack spacing={2}>
+                <Tabs value={value} onChange={(_, value) => setValue(value)}>
+                  <Tab label="Headers" />
+                  <Tab label="Body" />
+                </Tabs>
+      
+                {/* Headers */}
+      
+                {value === 0 && <DataGrid
+                  rows={[
+                    {
+                      id: 1,
+                      key: 'Content-Type',
+                      value: 'application/json'
+                    }
+                  ]}
+                  columns={[
+                    {
+                      field: 'key',
+                      headerName: 'Key',
+                      flex: 1
+                    },
+                    {
+                      field: 'value',
+                      headerName: 'Value',
+                      flex: 1
+                    }
+                  ]}
+                />}
+      
+      
+                {/* Body */}
+      
+                  {value === 1 && (
+                    <CustomInput multiline placeholder={EXAMPLE_REST_POST} minRows={5} />
+                  )}
+      
+              </Stack>
+            </Paper>
               // <CustomInput multiline placeholder={EXAMPLE_REST_POST} minRows={5} />
-              <JsonField />
+              // <JsonField />
             )}
 
 
