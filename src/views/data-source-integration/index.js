@@ -102,60 +102,77 @@ const DataSourceIntegration = () => {
 
             {tipoServicio === 'REST-POST' && (
               <Paper elevation={3} sx={{ width: '100%', p: 2 }}>
-              <Stack spacing={2}>
-                <Tabs value={value} onChange={(_, value) => setValue(value)}>
-                  <Tab label="Headers" />
-                  <Tab label="Body" />
-                </Tabs>
-      
-                {/* Headers */}
-      
-                {value === 0 && <DataGrid
-                  rows={[
-                    {
-                      id: 1,
-                      key: 'Content-Type',
-                      value: 'application/json'
-                    }
-                  ]}
-                  columns={[
-                    {
-                      field: 'key',
-                      headerName: 'Key',
-                      flex: 1
-                    },
-                    {
-                      field: 'value',
-                      headerName: 'Value',
-                      flex: 1
-                    }
-                  ]}
-                />}
-      
-      
-                {/* Body */}
-      
-                  {value === 1 && (
-                    <CustomInput multiline placeholder={EXAMPLE_REST_POST} minRows={5} />
+                <Stack spacing={2}>
+                  <Tabs value={value} onChange={(_, value) => setValue(value)}>
+                    <Tab label="Headers" />
+                    <Tab label="Body" />
+                  </Tabs>
+
+                  {/* Headers */}
+
+                  {value === 0 && (
+                    <>
+                      <DataGrid
+                        rows={[
+                          {
+                            id: 1,
+                            key: 'Content-Type',
+                            value: 'application/json'
+                          }
+                        ]}
+                        columns={[
+                          {
+                            field: 'key',
+                            headerName: 'Key',
+                            flex: 1
+                          },
+                          {
+                            field: 'value',
+                            headerName: 'Value',
+                            flex: 1
+                          }
+                        ]}
+                        checkboxSelection
+                        disableSelectionOnClick
+                      />
+                      {Array.from({ length: numVars }, (_, i) => (
+                        <VariableField key={i} numVars={i + 1} />
+                      ))}
+                      <Stack direction="row" spacing={2} px={4} >
+                        <Button variant="outlined" startIcon={<IconPlus />} onClick={() => setNumVars(numVars + 1)}>Añadir Variable</Button>
+                        {numVars > 1 && <Button variant="outlined" startIcon={<IconTrash />} color="error" onClick={() => setNumVars(numVars - 1)}>Eliminar Variable</Button>}
+                      </Stack>
+                    </>
                   )}
-      
-              </Stack>
-            </Paper>
+
+
+                  {/* Body */}
+
+                  {value === 1 && (
+                    <>
+                      <CustomInput multiline placeholder={EXAMPLE_REST_POST} minRows={5} />
+                      {Array.from({ length: numVars }, (_, i) => (
+                        <VariableField key={i} numVars={i + 1} />
+                      ))}
+                      <Stack direction="row" spacing={2} px={4} >
+                        <Button variant="outlined" startIcon={<IconPlus />} onClick={() => setNumVars(numVars + 1)}>Añadir Variable</Button>
+                        {numVars > 1 && <Button variant="outlined" startIcon={<IconTrash />} color="error" onClick={() => setNumVars(numVars - 1)}>Eliminar Variable</Button>}
+                      </Stack>
+                    </>
+                  )}
+
+                </Stack>
+              </Paper>
               // <CustomInput multiline placeholder={EXAMPLE_REST_POST} minRows={5} />
               // <JsonField />
             )}
 
 
-            {Array.from({ length: numVars }, (_, i) => (
-              <VariableField key={i} numVars={i + 1} />
-            ))}
+
 
           </Stack>
 
-          <Stack direction="row" spacing={2} px={4} >
-            <Button variant="outlined" startIcon={<IconPlus />} onClick={() => setNumVars(numVars + 1)}>Añadir Variable</Button>
-            {numVars > 1 && <Button variant="outlined" startIcon={<IconTrash />} color="error" onClick={() => setNumVars(numVars - 1)}>Eliminar Variable</Button>}
-          </Stack>
+
 
         </SubCard>
 
