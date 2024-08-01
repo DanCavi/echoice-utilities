@@ -65,14 +65,14 @@ const menuItems = {
           icon: icons.IconManualGearbox,
           breadcrumbs: false
         },
-        {
-          id: 'ws-generation',
-          title: 'Web Service Generation',
-          type: 'item',
-          url: '/ws-generation',
-          icon: icons.IconChartDots3,
-          breadcrumbs: false
-        },
+        // {
+        //   id: 'ws-generation',
+        //   title: 'Web Service Generation',
+        //   type: 'item',
+        //   url: '/ws-generation',
+        //   icon: icons.IconChartDots3,
+        //   breadcrumbs: false
+        // },
         {
           id: 'test',
           title: 'Test',

@@ -43,7 +43,8 @@ const SelectStandar = ({
   width = '100%',
   textAlign = 'left',
   maxHeight = 200,
-  justifyContent = 'flex-start'
+  justifyContent = 'flex-start',
+  multiple = false
 }) => {
   const [selectedValue, setSelectedValue] = useState(datos.includes(value) ? value : '');
 
@@ -67,6 +68,7 @@ const SelectStandar = ({
             onChange={handleChange}
             size="small"
             sx={{ textAlign }}
+            multiple={multiple}
           >
             <MenuItem value="" sx={{ justifyContent }}>
               <em style={{ color: '#9E9E9E' }}>

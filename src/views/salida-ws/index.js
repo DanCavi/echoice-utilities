@@ -3,6 +3,7 @@ import { DataGrid } from "@mui/x-data-grid"
 import MainCard from "ui-component/cards/MainCard"
 import SubCard from "ui-component/cards/SubCard"
 import CustomInput from "ui-component/Input/CustomInput"
+import SelectStandar from "ui-component/Select/Select"
 import TituloStandar from "ui-component/Titulo/TituloStandar"
 
 const SalidaWS = () => {
@@ -13,16 +14,28 @@ const SalidaWS = () => {
 
           <Grid container spacing={3}>
 
-            <Grid item xs={8}>
+            <Grid item xs={10}>
 
             <TituloStandar titulo="Nombre Web Service"/>
             <CustomInput />
             </Grid>
 
-            <Grid item xs={6}>
+            <Grid item xs={4}>
 
-              <TituloStandar titulo="Tipo Web Service"/>
-              <CustomInput />
+              <TituloStandar titulo="WSs"/>
+              <SelectStandar datos={['CCS']} />
+
+            </Grid>
+            <Grid item xs={4}>
+
+              <TituloStandar titulo="Variables"/>
+              <SelectStandar
+
+
+                datos={['rut_deudor, nombre_deudor, nro_docs_boletin, nro_docs_infocom']} 
+                multiple 
+                
+              />
 
             </Grid>
 
