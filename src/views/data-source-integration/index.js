@@ -78,7 +78,7 @@ const DataSourceIntegration = () => {
 
             </Grid>
 
-            <Grid item xs={8}>
+            <Grid item xs={12}>
 
               <TituloStandar titulo="URL" />
               <CustomInput />
