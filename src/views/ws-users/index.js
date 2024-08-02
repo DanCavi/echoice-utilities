@@ -7,8 +7,11 @@ import { INITIAL_ROWS_USERS } from 'dev-constants';
 
 import DialogForm from 'dev-components/DialogForm';
 import SubCard from 'ui-component/cards/SubCard';
-import { Stack } from '@mui/material';
+import { Box, Button, Grid, Stack } from '@mui/material';
 import UsuarioStepper from 'dev-components/UsuarioStepper';
+import TituloStandar from 'ui-component/Titulo/TituloStandar';
+import CustomInput from 'ui-component/Input/CustomInput';
+import { toCamelCase } from 'dev-utils/functions';
 
 const COLUMNS = [
   {
@@ -57,6 +60,8 @@ const WSUsers = () => {
     setOpen(true);
   };
 
+  const fields = ['Usuario', 'Password', 'Confirmar Password', 'Nombre', 'Telefono', 'Direccion'];
+
   return (
     <MainCard title="Web Service Users" sx={{ p: 2 }} >
 
@@ -64,7 +69,19 @@ const WSUsers = () => {
 
         <SubCard title="Crear Usuario">
 
-          <UsuarioStepper />
+          <Grid container spacing={2}>
+
+            {fields.map((name) => (
+              <Grid item xs={4} key={name}>
+                <TituloStandar titulo={name} />
+                <CustomInput name={toCamelCase(name)} />
+              </Grid>
+            ))}
+          </Grid>
+
+          <Box width={'100%'} py={2}>
+            <Button variant="contained" fullWidth >Crear</Button>
+          </Box>
 
         </SubCard>
 

@@ -46,12 +46,14 @@ const SelectStandar = ({
   justifyContent = 'flex-start',
   multiple = false
 }) => {
-  const [selectedValue, setSelectedValue] = useState(datos.includes(value) ? value : '');
+  const [selectedValue, setSelectedValue] = useState(
+    multiple ? (Array.isArray(value) ? value : []) : datos.includes(value) ? value : ''
+);
 
 
   const handleChange = (e) => {
     const newValue = e.target.value;
-    setSelectedValue(e.target.value)
+    setSelectedValue(newValue)
     if (onChange) onChange(newValue)
   }
 
@@ -90,7 +92,8 @@ const SelectStandar = ({
 SelectStandar.propTypes = {
   datos: PropTypes.array,
   value: PropTypes.any,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  multiple: PropTypes.bool
 };
 
 export default SelectStandar;

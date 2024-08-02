@@ -1,5 +1,6 @@
-import { Grid, Stack } from "@mui/material"
+import { Button, Grid, Stack } from "@mui/material"
 import { DataGrid } from "@mui/x-data-grid"
+import { IconDeviceFloppy } from "@tabler/icons-react"
 import MainCard from "ui-component/cards/MainCard"
 import SubCard from "ui-component/cards/SubCard"
 import CustomInput from "ui-component/Input/CustomInput"
@@ -32,11 +33,16 @@ const SalidaWS = () => {
               <SelectStandar
 
 
-                datos={['rut_deudor, nombre_deudor, nro_docs_boletin, nro_docs_infocom']} 
+                datos={['rut_deudor', 'nombre_deudor', 'nro_docs_boletin', 'nro_docs_infocom']} 
                 multiple 
                 
               />
 
+            </Grid>
+            <Grid item xs={4} alignContent={'end'}>
+              <div>
+              <Button variant="contained" startIcon={<IconDeviceFloppy />} fullWidth size="large">Crear</Button>
+              </div>
             </Grid>
 
           </Grid>

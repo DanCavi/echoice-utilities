@@ -47,7 +47,7 @@ const CrearEmpresa = () => {
     {
       field: 'actions',
       headerName: 'Acciones',
-      flex: .6,
+      flex: .7,
       type: 'actions',
       getActions: (params) => [
         <GridActionsCellItem
@@ -85,6 +85,8 @@ const CrearEmpresa = () => {
             form.scrollIntoView({ behavior: 'smooth', block: 'center' })
             
           }}
+
+
         />,
         <GridActionsCellItem
           icon={<IconTrash />}
@@ -106,7 +108,7 @@ const CrearEmpresa = () => {
   const [rows, setRows] = useState(INITIAL_ROWS_EMPRESAS)
   const formRef = useRef(null)
 
-  const fields = ['Name', 'Legal Identification', 'Country', 'Email', 'Phone Number', 'Address']
+  const fields = ['Nombre', 'Identificacion Legal', 'Pais', 'Email', 'Numero', 'Direccion']
 
   return (
     <MainCard title="Crear Empresa" >

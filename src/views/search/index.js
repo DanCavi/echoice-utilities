@@ -62,7 +62,7 @@ const SearchRut = () => {
           />}
 
 
-          {/* DNI Pr_Test */}
+          {/* DNI Pruebas */}
 
             {value === 1 && <DataGrid
               rows={[]}
@@ -71,6 +71,7 @@ const SearchRut = () => {
                   
                 }
               ]}
+              autoHeight
             />}
 
 
@@ -78,11 +79,11 @@ const SearchRut = () => {
 
           {/* Body */}
 
-            {value === 2 && <div>Body</div>}
+            {value === 2 && <CustomInput multiline minRows={6}/>}
 
           {/* Response */}
 
-            {value === 3 && <div>Response</div>}
+            {value === 3 && <CustomInput multiline minRows={6}/>}
 
         </Stack>
       </Paper>
