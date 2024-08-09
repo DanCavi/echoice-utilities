@@ -42,19 +42,19 @@ const menuItems = {
           icon: icons.IconGitFork,
         },
         {
-          id: 'ws-users',
-          title: 'Web Service Users',
-          type: 'item',
-          url: '/ws-users',
-          icon: icons.IconUsersGroup,
-          breadcrumbs: false
-        },
-        {
           id: 'perfiles',
           title: 'Perfiles',
           type: 'item',
           url: '/perfiles',
           icon: icons.IconFileAnalytics,
+          breadcrumbs: false
+        },
+        {
+          id: 'ws-users',
+          title: 'Web Service Users',
+          type: 'item',
+          url: '/ws-users',
+          icon: icons.IconUsersGroup,
           breadcrumbs: false
         },
         {
@@ -89,6 +89,14 @@ const menuItems = {
       type: 'group',
       children: [
         {
+          id: 'variable-workshop',
+          title: 'Variable Workshop',
+          type: 'item',
+          url: '/variable-workshop',
+          icon: icons.IconChartDots3,
+          breadcrumbs: false
+        },
+        {
           id: 'system-option',
           title: 'System Option',
           type: 'item',
@@ -96,14 +104,6 @@ const menuItems = {
           icon: icons.IconSettings,
           breadcrumbs: false
         },
-        {
-          id: 'variable-workshop',
-          title: 'Variable Workshop',
-          type: 'item',
-          url: '/variable-workshop',
-          icon: icons.IconChartDots3,
-          breadcrumbs: false
-        }
       ]
     }
   ]
