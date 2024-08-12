@@ -100,6 +100,48 @@ const DataSourceIntegration = () => {
               <CustomInput multiline placeholder={EXAMPLE_SOAP} minRows={15} />
             )}
 
+            {tipoServicio === 'REST-GET' && (
+              <>
+              <DataGrid
+                rows={[
+                  {
+                    id: 1,
+                    key: 'Content-Type',
+                    value: 'application/json'
+                  },
+                  {
+                    id: 2,
+                    key: 'Authorization',
+                    value: 'Bearer token'
+                  }
+                ]}
+                columns={[
+                  {
+                    field: 'key',
+                    headerName: 'Key',
+                    flex: 1
+                  },
+                  {
+                    field: 'value',
+                    headerName: 'Value',
+                    flex: 1
+                  }
+                ]}
+                checkboxSelection
+                disableSelectionOnClick
+              />
+              {Array.from({ length: numVars }, (_, i) => (
+                <VariableField key={i} numVars={i + 1} />
+              ))}
+              <Stack direction="row" spacing={2} px={4} >
+                <Button variant="outlined" startIcon={<IconPlus />} onClick={() => setNumVars(numVars + 1)}>Añadir Variable</Button>
+                {numVars > 1 && <Button variant="outlined" startIcon={<IconTrash />} color="error" onClick={() => setNumVars(numVars - 1)}>Eliminar Variable</Button>}
+              </Stack>
+            </>
+            )
+
+            }
+
             {tipoServicio === 'REST-POST' && (
               <Paper elevation={3} sx={{ width: '100%', p: 2 }}>
                 <Stack spacing={2}>
