@@ -67,10 +67,6 @@ const MainRoutes = {
       element: <SalidaWS />
     },
     {
-      path: 'variable-workshop',
-      element: <VariableWorkshop />
-    },
-    {
       path: 'system-option',
       element: <SystemOption />
     }

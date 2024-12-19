@@ -25,24 +25,18 @@ const CrearEmpresa = () => {
   const columns = [
     {
       field: 'name',
-      headerName: 'Nombre Empresa',
-      flex: 1
+      headerName: 'Nombre Fuente',
+      flex: .5
     },
     {
       field: 'legalIdentification',
-      headerName: 'Identificación Legal',
+      headerName: 'Descripcion',
       flex: 1
     },
     {
       field: 'country',
       headerName: 'País',
       flex: 1
-    },
-    {
-      field: 'state',
-      headerName: 'Activo',
-      type: 'boolean',
-      flex: .3
     },
     {
       field: 'actions',
@@ -106,50 +100,24 @@ const CrearEmpresa = () => {
 
 
   const [rows, setRows] = useState(INITIAL_ROWS_EMPRESAS)
-  const formRef = useRef(null)
-
-  const fields = ['Nombre', 'Identificacion Legal', 'Pais', 'Email', 'Numero', 'Direccion']
 
   return (
-    <MainCard title="Crear Empresa" >
-      <Stack spacing={2}>
-
-        <SubCard title="Crear">
-          
-          {/* <EmpresaStepper
-            setRows={setRows}
-            scrollInto={ref.current}
-            setSnackbar={setSnackbar}
-            formRef={formRef}
-          /> */}
-          <Grid container spacing={2}>
-
-          {fields.map((name) => (
-            <Grid item xs={4} key={name}>
-              <TituloStandar titulo={name} />
-              <CustomInput name={toCamelCase(name)} />
-            </Grid>
-          ))}
-          </Grid>
-          <Box width={'100%'} py={2}>
-            <Button variant="contained" fullWidth >Crear</Button>
-          </Box>
-        </SubCard>
-        <SubCard title="Lista de Empresas"
-        >
-          <DataGrid
-            rows={rows}
-            columns={columns}
-            autoHeight
-          />
-          <div ref={ref}></div>
-        </SubCard>
-      </Stack>
-      <SnackbarAlert 
-        open={snackbar.open}
-        message={snackbar.message}
-        severity={snackbar.severity}
-        onClose={() => setSnackbar({...snackbar, open: false})}
+    <MainCard title="Administracion Expertdata" >
+      <DataGrid
+        rows={rows}
+        columns={columns}
+        autoHeight
+        initialState={{
+          pagination: {
+            paginationModel: { pageSize: 5 }
+          }
+        }}
+        pageSizeOptions={[5, 10, 20]}
+        slotProps={{
+          toolbar: {
+            showQuickFilter: true
+          }
+        }}
       />
     </MainCard>
   )
