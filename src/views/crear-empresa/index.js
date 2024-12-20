@@ -32,6 +32,7 @@ import { useEffect, useRef, useState } from "react";
 import MainCard from "ui-component/cards/MainCard";
 import SubCard from "ui-component/cards/SubCard";
 import CustomInput from "ui-component/Input/CustomInput";
+import SelectStandar from "ui-component/Select/Select";
 import TituloStandar from "ui-component/Titulo/TituloStandar";
 
 const CrearEmpresa = () => {
@@ -153,8 +154,8 @@ const CrearEmpresa = () => {
             <Stack spacing={2}>
               <Stack direction={"row"} spacing={2}>
                 <div>
-                  <TituloStandar titulo="Metodo" />
-                  <CustomInput />
+                  <TituloStandar titulo="API" />
+                  <SelectStandar datos={["Documento tributario", "Inicio Actividades", "Actividades Economicas"]} />
                 </div>
                 <div style={{ flex: 1 }}>
                   <TituloStandar titulo="URL" />
@@ -168,7 +169,7 @@ const CrearEmpresa = () => {
               <Divider />
               <Tabs value={value} onChange={(_, value) => setValue(value)}>
                 <Tab label="Headers" />
-                <Tab label="DNI Pruebas" />
+                {/* <Tab label="DNI Pruebas" /> */}
                 <Tab label="Body" />
                 <Tab label="Response" />
               </Tabs>
@@ -183,6 +184,11 @@ const CrearEmpresa = () => {
                       key: "Content-Type",
                       value: "application/json",
                     },
+                    {
+                      id: 2,
+                      key: "Authorization",
+                      value: "Bearer token",
+                    }
                   ]}
                   columns={[
                     {
@@ -201,15 +207,15 @@ const CrearEmpresa = () => {
 
               {/* DNI Pruebas */}
 
-              {value === 1 && <DataGrid rows={[]} columns={[{}]} autoHeight />}
+              {/* {value === 1 && <DataGrid rows={[]} columns={[{}]} autoHeight />} */}
 
               {/* Body */}
 
-              {value === 2 && <CustomInput multiline minRows={6} />}
+              {value === 1 && <CustomInput multiline minRows={6} />}
 
               {/* Response */}
 
-              {value === 3 && <CustomInput multiline minRows={6} />}
+              {value === 2 && <CustomInput multiline minRows={6} />}
             </Stack>
           </Paper>
         </DialogContent>
